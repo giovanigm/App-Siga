@@ -32,11 +32,11 @@ export function executeLogin(usuario, senha) {
         return axios.post(`${SERVER_URL}/WSLoginFranqueado`, { usuario, senha }, config)
             .then((res) => {
                 console.log('RESPONSE', res);
-                
+
                 if (res.data.status_code === 200) {
                     return dispatch(executeLoginSuccess(res.data.franqueado));
                 }
-                
+
                 return dispatch(executeLoginFailed(res.data.status_code));
             })
             .catch((error) => {
