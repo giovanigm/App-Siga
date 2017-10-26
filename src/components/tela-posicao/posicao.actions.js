@@ -25,7 +25,7 @@ export function retrievePosicaoFranquia(codigoFranquia, anoPosicao) {
                 if (res.data.status_code === 200) {
                     return dispatch(retrievePosicaoFranquiaSuccess(res.data));
                 }
-                
+
                 return dispatch(retrievePosicaoFranquiaFailed(res.data.status_code));
             })
             .catch((error) => {
