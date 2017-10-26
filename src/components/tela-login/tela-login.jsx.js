@@ -4,7 +4,6 @@ import {
     View,
     Image,
     AsyncStorage,
-    KeyboardAvoidingView
 } from 'react-native';
 import { Content, Form, Item, Input, Icon, Button } from 'native-base';
 import Spinner from 'react-native-loading-spinner-overlay';
@@ -13,9 +12,8 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import * as loginActions from './login.actions';
-import { geraMensagemErro } from '../../util/apiErrorUtil';
-import BackgroundImage from '../../images/background.png';
-import Logo from '../../images/logo.png';
+import BackgroundImage from '../../../assets/images/background.png';
+import Logo from '../../../assets/images/logo.png';
 import styles from './styles';
 
 class TelaLogin extends Component {
@@ -24,15 +22,6 @@ class TelaLogin extends Component {
     static propTypes = {
         navigator: PropTypes.shape({
             resetTo: PropTypes.func,
-        }).isRequired,
-        login: PropTypes.shape({
-            usuario: PropTypes.string,
-            token: PropTypes.string,
-            errorStatus: PropTypes.number,
-        }).isRequired,
-        actions: PropTypes.shape({
-            executeLogin: PropTypes.func,
-            saveUserDataInStore: PropTypes.func,
         }).isRequired,
     };
 
@@ -44,51 +33,6 @@ class TelaLogin extends Component {
             usuario: '',
             senha: '',
         };
-
-        this.executeLogin = this.executeLogin.bind(this);
-    }
-
-    componentWillMount() {
-        try {
-            AsyncStorage.getItem('token').then((token) => {
-                if (token !== null) {
-                    AsyncStorage.getItem('usuario').then((usuario) => {
-                        const dados = {
-                            token,
-                            usuario,
-                        };
-                        this.props.actions.saveUserDataInStore(dados);
-                        this.navegaTelaFranquias();
-                    });
-                }
-            });
-        } catch (error) {
-            console.log(error);
-        }
-        return '';
-    }
-
-    executeLogin() {
-        this.setState({ isLoading: true });
-        this.props.actions.executeLogin(this.state.usuario, this.state.senha)
-            .then(() => {
-                if (this.props.login.errorStatus > 0) {
-                    geraMensagemErro(this.props.login.errorStatus);
-                    this.setState({ isLoading: false });
-                } else {
-                    this.saveUserData(this.props.login.usuario, this.props.login.token);
-                    this.setState({ login: this.props.login, isLoading: false }, this.navegaTelaFranquias);
-                }
-            });
-    }
-
-    saveUserData = (usuario, token) => {
-        try {
-            AsyncStorage.setItem('usuario', usuario);
-            AsyncStorage.setItem('token', token);
-        } catch (error) {
-            console.log(error);
-        }
     }
 
     navegaTelaFranquias = () => {
@@ -140,7 +84,7 @@ class TelaLogin extends Component {
                                 <Button
                                     block
                                     style={styles.buttonContainer}
-                                    onPress={this.executeLogin}>
+                                    onPress={this.navegaTelaFranquias}>
                                     <Text style={styles.buttonText}>ENTRAR</Text>
                                 </Button>
                             </Form>
@@ -154,16 +98,4 @@ class TelaLogin extends Component {
 }
 
 
-function mapStateToProps(state, ownProps) {
-    return {
-        login: state.login,
-    };
-}
-
-function mapDispatchToProps(dispatch) {
-    return {
-        actions: bindActionCreators(loginActions, dispatch),
-    };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(TelaLogin);
+export default TelaLogin;
