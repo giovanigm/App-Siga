@@ -11,7 +11,7 @@ import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import * as loginActions from './login.actions';
+import * as loginActions from './actions';
 import BackgroundImage from '../../../assets/images/background.png';
 import Logo from '../../../assets/images/logo.png';
 import styles from './styles';
@@ -22,6 +22,7 @@ class TelaLogin extends Component {
     static propTypes = {
         navigator: PropTypes.shape({
             resetTo: PropTypes.func,
+            setDrawerEnabled: PropTypes.func,
         }).isRequired,
     };
 
@@ -33,12 +34,22 @@ class TelaLogin extends Component {
             usuario: '',
             senha: '',
         };
+
+        this.props.navigator.setDrawerEnabled({
+            side: 'left', // the side of the drawer since you can have two, 'left' / 'right'
+            enabled: false, // should the drawer be enabled or disabled (locked closed)
+        });
     }
 
-    navegaTelaFranquias = () => {
+    navegaTelaPerfil = () => {
         this.props.navigator.resetTo({
-            screen: 'app.Franquias',
-            title: 'Minhas Franquias',
+            screen: 'app.Perfil',
+            title: 'Perfil',
+            leftButtons: [
+                {
+                    id: 'sideMenu',
+                },
+            ],
         });
     }
 
@@ -84,7 +95,7 @@ class TelaLogin extends Component {
                                 <Button
                                     block
                                     style={styles.buttonContainer}
-                                    onPress={this.navegaTelaFranquias}>
+                                    onPress={this.navegaTelaPerfil}>
                                     <Text style={styles.buttonText}>ENTRAR</Text>
                                 </Button>
                             </Form>

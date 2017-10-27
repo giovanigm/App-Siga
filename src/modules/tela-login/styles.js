@@ -30,7 +30,6 @@ const styles = {
     input: {
         color: 'white',
         fontSize: Values.screenHeight / 35,
-        fontFamily: 'Bariol-Regular',
     },
     inputItem: {
         marginBottom: 10,

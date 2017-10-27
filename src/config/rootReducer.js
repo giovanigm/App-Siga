@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import login from '../components/tela-login/login.reducer';
+import login from '../modules/tela-login/reducer';
 
 const rootReducer = combineReducers({
     login,

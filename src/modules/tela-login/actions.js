@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { types } from './login.reducer';
+import { types } from './reducer';
 import { SERVER_URL } from '../../constants/api';
 
 export function executeLoginSuccess(res) {

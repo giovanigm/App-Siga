@@ -12,5 +12,12 @@ Navigation.startSingleScreenApp({
         animationType: 'fade',
         title: 'Login',
     },
+    drawer: {
+        left: {
+            screen: 'app.Drawer',
+            passProps: {},
+        },
+        disableOpenGesture: false, // optional, can the drawer be opened with a swipe instead of button
+    },
 });
 
