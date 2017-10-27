@@ -3,7 +3,7 @@ import Values from '../../constants/values';
 const styles = {
     navigatorStyle: {
         navBarHidden: true,
-        statusBarColor: '#F57C00',
+        statusBarColor: '#37474F',
         statusBarTextColorScheme: 'light',
     },
     container: {

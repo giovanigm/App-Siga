@@ -1,39 +1,53 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Container, Content, Body, Card, CardItem, Text } from 'native-base';
+import { Container, Content, Body, Card, CardItem, Text, H1, H2 } from 'native-base';
 
 import styles from './styles';
 
 class TelaPerfil extends Component {
     static navigatorStyle = styles.navigatorStyle;
-    
+
     static propTypes = {
 
     }
 
-    constructor(props) {
-        super(props);
-
-    }
-
-
     render() {
         return (
-            <Container>
+            <Container style={styles.container}>
                 <Content>
-                    <Card>
+                    <Card style={styles.card}>
                         <CardItem header>
-                            <Text>NativeBase</Text>
+                            <H1>Joselito da Silva</H1>
                         </CardItem>
                         <CardItem>
                             <Body>
-                                <Text>
-                                    Eae Cambada
-                                </Text>
+                                <Text>RA: 142B51</Text>
                             </Body>
                         </CardItem>
-                        <CardItem footer>
-                            <Text>GeekyAnts</Text>
+                        <CardItem>
+                            <Body>
+                                <Text>E-mail: joselito@gmail.com</Text>
+                            </Body>
+                        </CardItem>
+                        <CardItem>
+                            <Body>
+                                <Text>CPF : 367.876.970-00</Text>
+                            </Body>
+                        </CardItem>
+                        <CardItem>
+                            <Body>
+                                <Text>Nascimento: 20/10/1997</Text>
+                            </Body>
+                        </CardItem>
+                        <CardItem style={styles.indices}>
+                            <Body>
+                                <H2>Índices</H2>
+                            </Body>
+                        </CardItem>
+                        <CardItem>
+                            <Body>
+                                <Text>PP: 82,60        PR: 8,71</Text>
+                            </Body>
                         </CardItem>
                     </Card>
                 </Content>

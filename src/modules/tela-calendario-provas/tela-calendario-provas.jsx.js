@@ -4,7 +4,7 @@ import { Container, Content, Body, Card, CardItem, Text, H1, H2 } from 'native-b
 
 import styles from './styles';
 
-class TelaHistorico extends Component {
+class TelaCalendarioProvas extends Component {
     static navigatorStyle = styles.navigatorStyle;
 
     static propTypes = {
@@ -17,7 +17,7 @@ class TelaHistorico extends Component {
                 <Content>
                     <Card style={styles.card}>
                         <CardItem header>
-                            <H1>Histórico do Aluno</H1>
+                            <H1>Calendário de Provas</H1>
                         </CardItem>
                     </Card>
                 </Content>
@@ -26,4 +26,4 @@ class TelaHistorico extends Component {
     }
 }
 
-export default TelaHistorico;
+export default TelaCalendarioProvas;
