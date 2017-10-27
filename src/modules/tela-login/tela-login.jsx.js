@@ -47,7 +47,7 @@ class TelaLogin extends Component {
             screen: {
                 screen: 'app.Perfil',
                 animationType: 'fade',
-                title: 'Dados do Aluno',
+                title: 'Início',
                 leftButtons: [
                     {
                         id: 'sideMenu',

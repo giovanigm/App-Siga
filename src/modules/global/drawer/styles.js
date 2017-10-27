@@ -52,4 +52,13 @@ export default {
         fontSize: 16,
         marginLeft: 20,
     },
+    icon: {
+        color: '#777',
+        fontSize: 26,
+        width: 30,
+    },
+    item: {
+        width: 200,
+        backgroundColor: 'rgba(0, 0, 0, 0.0)',
+    },
 };
