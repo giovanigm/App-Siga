@@ -5,6 +5,8 @@ import { Container, Content, Body, Card, CardItem, Text } from 'native-base';
 import styles from './styles';
 
 class TelaPerfil extends Component {
+    static navigatorStyle = styles.navigatorStyle;
+    
     static propTypes = {
 
     }

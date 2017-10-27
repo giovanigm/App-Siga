@@ -5,6 +5,7 @@ import {
     Image,
     AsyncStorage,
 } from 'react-native';
+import { Navigation } from 'react-native-navigation';
 import { Content, Form, Item, Input, Icon, Button } from 'native-base';
 import Spinner from 'react-native-loading-spinner-overlay';
 import PropTypes from 'prop-types';
@@ -42,14 +43,24 @@ class TelaLogin extends Component {
     }
 
     navegaTelaPerfil = () => {
-        this.props.navigator.resetTo({
-            screen: 'app.Perfil',
-            title: 'Perfil',
-            leftButtons: [
-                {
-                    id: 'sideMenu',
+        Navigation.startSingleScreenApp({
+            screen: {
+                screen: 'app.Perfil',
+                animationType: 'fade',
+                title: 'Dados do Aluno',
+                leftButtons: [
+                    {
+                        id: 'sideMenu',
+                    },
+                ],
+            },
+            drawer: {
+                left: {
+                    screen: 'app.Drawer',
+                    passProps: {},
                 },
-            ],
+                disableOpenGesture: false,
+            },
         });
     }
 
