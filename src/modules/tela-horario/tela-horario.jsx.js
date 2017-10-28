@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Container, Content, Body, Card, CardItem, Text, H1, H2, List } from 'native-base';
+import { Container, Content, List } from 'native-base';
 
 import CardHorario from './card-horario';
 
