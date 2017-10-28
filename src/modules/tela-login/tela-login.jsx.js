@@ -37,8 +37,8 @@ class TelaLogin extends Component {
         };
 
         this.props.navigator.setDrawerEnabled({
-            side: 'left', // the side of the drawer since you can have two, 'left' / 'right'
-            enabled: false, // should the drawer be enabled or disabled (locked closed)
+            side: 'left',
+            enabled: false,
         });
     }
 
