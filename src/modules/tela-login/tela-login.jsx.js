@@ -4,6 +4,7 @@ import {
     View,
     Image,
     AsyncStorage,
+    Platform,
 } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { Content, Form, Item, Input, Icon, Button } from 'native-base';
