@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Container, Content, List } from 'native-base';
+import { Container, Content, List, ListItem, Text } from 'native-base';
 
-import CardHistorico from './card-historico';
+import CardDisciplina from './card-disciplina';
 
 import styles from './styles';
 
@@ -49,6 +49,27 @@ const historico = [
             },
         ],
     },
+    {
+        periodo: 3,
+        disciplinas: [
+            {
+                codigo: 'ISO100',
+                nome: 'Sistemas Operacionais I',
+                aprovado: 'Sim',
+                mediaFinal: 8.2,
+                frequencia: 100,
+                observação: 'Aluno muito louco de alcool e entorpecentes',
+            },
+            {
+                codigo: 'ILP010',
+                nome: 'Linguagem de Programação',
+                aprovado: 'Sim',
+                mediaFinal: 8.2,
+                frequencia: 100,
+                observação: 'Aluno muito louco de alcool e entorpecentes',
+            },
+        ],
+    },
 ];
 
 class TelaHistorico extends Component {
@@ -63,9 +84,16 @@ class TelaHistorico extends Component {
             <Container style={styles.container}>
                 <Content>
                     <List
-                        dataArray={disciplinas}
+                        dataArray={historico}
                         renderRow={data =>
-                            (<CardHistorico style={styles.item} disciplina={data} />)} />
+                            (<Content>
+                                <ListItem itemDivider>
+                                    <Text>{data.periodo}º Período</Text>
+                                </ListItem>
+                                <List
+                                    dataArray={data.disciplinas}
+                                    renderRow={dadosDisciplina => (<CardDisciplina disciplina={dadosDisciplina} />)} />
+                            </Content>)} />
                 </Content>
             </Container>
         );
