@@ -19,9 +19,14 @@ const drawerImage = require('../../../../assets/images/logo-kitchen-sink.png');
 
 const datas = [
     {
-        name: 'Início',
-        route: 'app.Perfil',
+        name: 'Início - Avisos',
+        route: 'app.Avisos',
         icon: 'home',
+    },
+    {
+        name: 'Meus Dados',
+        route: 'app.Perfil',
+        icon: 'person',
     },
     {
         name: 'Horário de Aulas',
@@ -34,7 +39,7 @@ const datas = [
         icon: 'calendar',
     },
     {
-        name: 'Histórico do Aluno',
+        name: 'Meu Histórico',
         route: 'app.Historico',
         icon: 'folder-open',
     },
@@ -44,7 +49,7 @@ const datas = [
         icon: 'stats',
     },
     {
-        name: 'Disciplinas do Aluno',
+        name: 'Minhas Disciplinas',
         route: 'app.Disciplinas',
         icon: 'list-box',
     },
@@ -72,7 +77,7 @@ class Drawer extends Component {
         this.props.navigator.pop({
             animated: false,
         });
-        if (menu.route !== 'app.Perfil') {
+        if (menu.icon !== 'home') {
             this.props.navigator.push({
                 screen: menu.route,
                 title: menu.name,

@@ -2,6 +2,7 @@ import { Navigation } from 'react-native-navigation';
 
 import Drawer from './modules/global/drawer';
 import TelaLogin from './modules/tela-login';
+import TelaAvisos from './modules/tela-avisos';
 import TelaPerfil from './modules/tela-perfil';
 import TelaDisciplinas from './modules/tela-disciplinas';
 import TelaHistorico from './modules/tela-historico';
@@ -14,6 +15,7 @@ import TelaCalendarioProvas from './modules/tela-calendario-provas';
 export function registerScreens(store, Provider) { //eslint-disable-line
     Navigation.registerComponent('app.Drawer', () => Drawer, store, Provider);
     Navigation.registerComponent('app.Login', () => TelaLogin, store, Provider);
+    Navigation.registerComponent('app.Avisos', () => TelaAvisos, store, Provider);
     Navigation.registerComponent('app.Perfil', () => TelaPerfil, store, Provider);
     Navigation.registerComponent('app.Disciplinas', () => TelaDisciplinas, store, Provider);
     Navigation.registerComponent('app.Historico', () => TelaHistorico, store, Provider);
