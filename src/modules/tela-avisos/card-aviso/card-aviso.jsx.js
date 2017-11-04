@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { List, ListItem, Card, CardItem, Text, Body, H1 } from 'native-base';
 import PropTypes from 'prop-types';
+import HTMLView from 'react-native-htmlview';
 
 import styles from './styles';
 
@@ -30,7 +31,8 @@ class CardAviso extends Component {
                 </CardItem>
                 <CardItem>
                     <Body>
-                        <Text>{aviso.conteudo}</Text>
+                        <HTMLView
+                            value={aviso.conteudo} />
                     </Body>
                 </CardItem>
             </Card>
