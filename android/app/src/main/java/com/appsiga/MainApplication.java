@@ -1,6 +1,7 @@
 package com.appsiga;
 
 import com.facebook.react.ReactPackage;
+import com.facebook.react.shell.MainReactPackage;
 import com.lugg.ReactNativeConfig.ReactNativeConfigPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.reactnativenavigation.NavigationApplication;
@@ -22,6 +23,7 @@ public class MainApplication extends NavigationApplication {
     // No need to add RnnPackage and MainReactPackage
     return Arrays.<ReactPackage>asList(
             // eg. new VectorIconsPackage()
+            new MainReactPackage(),
             new VectorIconsPackage(),
             new NavigationReactPackage(),
             new ReactNativeConfigPackage()
