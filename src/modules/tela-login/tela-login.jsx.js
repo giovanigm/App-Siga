@@ -13,7 +13,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import * as loginActions from './actions';
-import BackgroundImage from '../../../assets/images/background.png';
+import BackgroundImage from '../../../assets/images/background.jpg';
 import Logo from '../../../assets/images/logo.png';
 import styles from './styles';
 
