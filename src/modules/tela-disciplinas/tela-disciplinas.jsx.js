@@ -36,7 +36,26 @@ class TelaDisciplinas extends Component {
     static navigatorStyle = styles.navigatorStyle;
 
     static propTypes = {
+        navigator: PropTypes.shape({
+            push: PropTypes.func,
+        }).isRequired,
+    }
 
+    navegaDisciplina = (nomeDisciplina) => {
+        this.props.navigator.push({
+            screen: 'app.Disciplina',
+            title: nomeDisciplina,
+            topTabs: [{
+                screenId: 'app.Disciplina.Apresentacao',
+                title: 'Apresentação',
+            }, {
+                screenId: 'app.Disciplina.Material',
+                title: 'Material',
+            }, {
+                screenId: 'app.Disciplina.Aulas',
+                title: 'Aulas',
+            }],
+        });
     }
 
     render() {
@@ -46,7 +65,7 @@ class TelaDisciplinas extends Component {
                     <List
                         dataArray={disciplinas}
                         renderRow={data =>
-                            (<ListItem style={styles.item}>
+                            (<ListItem button onPress={() => this.navegaDisciplina(data.nome)} style={styles.item}>
                                 <Left>
                                     <Text style={styles.text}>{data.codigo}</Text>
                                     <Text style={styles.text}>{data.nome}</Text>

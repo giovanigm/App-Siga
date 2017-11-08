@@ -10,20 +10,6 @@ class TelaMenuDisciplina extends Component {
     static propTypes = {
 
     }
-
-    render() {
-        return (
-            <Container style={styles.container}>
-                <Content>
-                    <Card style={styles.card}>
-                        <CardItem header>
-                            <H1>Menu da Disciplina</H1>
-                        </CardItem>
-                    </Card>
-                </Content>
-            </Container>
-        );
-    }
 }
 
 export default TelaMenuDisciplina;

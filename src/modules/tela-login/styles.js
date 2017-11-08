@@ -35,7 +35,7 @@ const styles = {
         marginBottom: 10,
     },
     buttonContainer: {
-        backgroundColor: '#607D8B',
+        backgroundColor: '#b42c2f',
         paddingVertical: 15,
         marginTop: 5,
     },
