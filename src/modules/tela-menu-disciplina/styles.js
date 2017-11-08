@@ -1,5 +1,3 @@
-import { PixelRatio } from 'react-native';
-
 const styles = {
     navigatorStyle: {
         navBarTextColor: '#ffffff',
@@ -8,7 +6,7 @@ const styles = {
         statusBarColor: '#37474F',
         statusBarTextColorScheme: 'light',
 
-        topTabTextColor: '#c4c4c4',
+        topTabTextColor: '#90A4AE',
         selectedTopTabTextColor: '#ffffff',
 
         // Icons

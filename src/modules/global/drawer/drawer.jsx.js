@@ -53,6 +53,11 @@ const datas = [
         route: 'app.Disciplinas',
         icon: 'list-box',
     },
+    {
+        name: 'Sair',
+        route: 'app.Login',
+        icon: 'log-out',
+    },
 ];
 
 class Drawer extends Component {
@@ -62,6 +67,7 @@ class Drawer extends Component {
             push: PropTypes.func,
             popToRoot: PropTypes.func,
             toggleDrawer: PropTypes.func,
+            resetTo: PropTypes.func,
         }).isRequired,
     };
 
@@ -74,28 +80,35 @@ class Drawer extends Component {
     }
 
     navega = (menu) => {
-        this.props.navigator.pop({
-            animated: false,
-        });
-        if (menu.icon !== 'home') {
-            this.props.navigator.push({
+        if (menu.icon === 'log-out') {
+            this.props.navigator.resetTo({
                 screen: menu.route,
-                title: menu.name,
+            });
+        } else {
+            this.props.navigator.pop({
                 animated: false,
-                passProps: {},
-                backButtonHidden: true,
-                leftButtons: [
-                    {
-                        id: 'sideMenu',
-                    },
-                ],
+            });
+
+            if (menu.icon !== 'home') {
+                this.props.navigator.push({
+                    screen: menu.route,
+                    title: menu.name,
+                    animated: false,
+                    passProps: {},
+                    backButtonHidden: true,
+                    leftButtons: [
+                        {
+                            id: 'sideMenu',
+                        },
+                    ],
+                });
+            }
+            this.props.navigator.toggleDrawer({
+                side: 'left',
+                animated: true,
+                to: 'close',
             });
         }
-        this.props.navigator.toggleDrawer({
-            side: 'left',
-            animated: true,
-            to: 'close',
-        });
     };
 
     render() {
