@@ -27,7 +27,7 @@ class CardDisciplina extends Component {
     render() {
         const { disciplina } = this.props;
         return (
-            <Card>
+            <Card style={styles.card}>
                 <CardItem header>
                     <H3>{disciplina.codigo} - {disciplina.nome}</H3>
                 </CardItem>

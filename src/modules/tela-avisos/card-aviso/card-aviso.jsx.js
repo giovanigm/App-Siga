@@ -25,7 +25,7 @@ class CardAviso extends Component {
     render() {
         const { aviso } = this.props;
         return (
-            <Card>
+            <Card style={styles.card}>
                 <CardItem header>
                     <H1>{aviso.titulo}</H1>
                 </CardItem>

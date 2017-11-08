@@ -41,7 +41,7 @@ class TelaMaterialDisciplina extends Component {
                     <List
                         dataArray={materiais}
                         renderRow={data =>
-                            (<CardMaterial style={styles.item} material={data} />)} />
+                            (<CardMaterial material={data} />)} />
                 </Content>
             </Container>
         );

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Container, Content, List } from 'native-base';
 
+import CardAula from './card-aula';
+
 import styles from './styles';
 
 const aulas = [
@@ -51,7 +53,12 @@ class TelaAulasDisciplina extends Component {
     render() {
         return (
             <Container style={styles.container}>
-                
+                <Content>
+                    <List
+                        dataArray={aulas}
+                        renderRow={data =>
+                            (<CardAula aula={data} />)} />
+                </Content>
             </Container>
         );
     }

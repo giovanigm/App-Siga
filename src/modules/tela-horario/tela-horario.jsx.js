@@ -128,7 +128,7 @@ class TelaHorario extends Component {
                     <List
                         dataArray={horarios}
                         renderRow={data =>
-                            (<CardHorario style={styles.item} horario={data} />)} />
+                            (<CardHorario horario={data} />)} />
                 </Content>
             </Container>
         );

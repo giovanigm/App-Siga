@@ -91,7 +91,7 @@ class TelaNotasFaltas extends Component {
                     <List
                         dataArray={notas}
                         renderRow={data =>
-                            (<CardNotas style={styles.item} nota={data} />)} />
+                            (<CardNotas nota={data} />)} />
                 </Content>
             </Container>
         );

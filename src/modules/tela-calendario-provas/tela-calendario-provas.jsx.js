@@ -89,7 +89,7 @@ class TelaCalendarioProvas extends Component {
                     <List
                         dataArray={calendario}
                         renderRow={data =>
-                            (<CardProva style={styles.item} calendario={data} />)} />
+                            (<CardProva calendario={data} />)} />
                 </Content>
             </Container>
         );

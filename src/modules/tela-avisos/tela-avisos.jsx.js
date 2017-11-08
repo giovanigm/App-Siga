@@ -33,7 +33,7 @@ class TelaAvisos extends Component {
                     <List
                         dataArray={avisos}
                         renderRow={data =>
-                            (<CardAviso style={styles.item} aviso={data} />)} />
+                            (<CardAviso aviso={data} />)} />
                 </Content>
             </Container>
         );

@@ -23,7 +23,7 @@ class CardHorario extends Component {
     render() {
         const { horario } = this.props;
         return (
-            <Card>
+            <Card style={styles.card}>
                 <CardItem header>
                     <H3>{horario.dia}</H3>
                 </CardItem>

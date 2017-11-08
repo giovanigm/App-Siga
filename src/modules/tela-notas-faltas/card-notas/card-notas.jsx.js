@@ -26,7 +26,7 @@ class CardProva extends Component {
     render() {
         const { nota } = this.props;
         return (
-            <Card>
+            <Card style={styles.card}>
                 <CardItem header>
                     <H3>{nota.disciplina.codigo} - {nota.disciplina.nome}</H3>
                 </CardItem>

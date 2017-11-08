@@ -23,7 +23,7 @@ class CardProva extends Component {
     render() {
         const { calendario } = this.props;
         return (
-            <Card>
+            <Card style={styles.card}>
                 <CardItem header>
                     <H3>{calendario.disciplina.codigo} - {calendario.disciplina.nome}</H3>
                 </CardItem>

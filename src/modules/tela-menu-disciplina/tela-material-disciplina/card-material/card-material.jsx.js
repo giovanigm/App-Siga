@@ -26,7 +26,7 @@ class CardMaterial extends Component {
     render() {
         const { material } = this.props;
         return (
-            <Card>
+            <Card style={styles.card}>
                 <CardItem header>
                     <H3>{material.tipoArquivo} - {material.nome}</H3>
                 </CardItem>
