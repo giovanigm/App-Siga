@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { List, ListItem, Card, CardItem, Text, Left, H1 } from 'native-base';
+import { List, ListItem, Card, CardItem, Text, Left, H3 } from 'native-base';
 import PropTypes from 'prop-types';
 
 import styles from './styles';
@@ -29,7 +29,7 @@ class CardDisciplina extends Component {
         return (
             <Card>
                 <CardItem header>
-                    <H1>{disciplina.codigo} - {disciplina.nome}</H1>
+                    <H3>{disciplina.codigo} - {disciplina.nome}</H3>
                 </CardItem>
                 <CardItem>
                     <Left>

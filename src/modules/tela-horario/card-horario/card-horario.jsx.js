@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { List, ListItem, Card, CardItem, Text, Left, H1 } from 'native-base';
+import { List, ListItem, Card, CardItem, Text, Left, H3 } from 'native-base';
 import PropTypes from 'prop-types';
 
 import styles from './styles';
@@ -25,7 +25,7 @@ class CardHorario extends Component {
         return (
             <Card>
                 <CardItem header>
-                    <H1>{horario.dia}</H1>
+                    <H3>{horario.dia}</H3>
                 </CardItem>
                 <CardItem style={styles.legendaContainer}>
                     <Left>
