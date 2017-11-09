@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { List, ListItem, Card, CardItem, Text, H3 } from 'native-base';
+import { Content, List, ListItem, Card, CardItem, Text, H3 } from 'native-base';
 import PropTypes from 'prop-types';
 
 import styles from './styles';
@@ -27,7 +27,7 @@ class CardAula extends Component {
         return (
             <Card style={styles.card}>
                 <CardItem header>
-                    <H3>{aula.numero} - {aula.titulo}</H3>
+                    <H3>{aula.numero.toString()} - {aula.titulo}</H3>
                 </CardItem>
                 <CardItem style={styles.legendaContainer}>
                     <Text>{aula.descricao}</Text>
@@ -35,6 +35,11 @@ class CardAula extends Component {
                 <CardItem style={styles.legendaContainer}>
                     <Text>{aula.tipo}</Text>
                 </CardItem>
+                {aula.aulaMinistrada ? <Content>
+                    <CardItem><H3>Aula Ministrada</H3></CardItem>
+                    <CardItem><Text>{aula.aulaMinistrada.data}</Text></CardItem>
+                    <CardItem><Text>{aula.aulaMinistrada.conteudo}</Text></CardItem>
+                    <CardItem><Text>{aula.aulaMinistrada.dicas}</Text></CardItem></Content> : <Text /> }
             </Card>
         );
     }
