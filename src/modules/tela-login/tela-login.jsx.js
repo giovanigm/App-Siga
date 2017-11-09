@@ -82,6 +82,7 @@ class TelaLogin extends Component {
                                     <Input
                                         placeholder="Usuário"
                                         placeholderTextColor="white"
+                                        keyboardType={'numeric'}
                                         style={styles.input}
                                         onChangeText={text => this.setState({ usuario: text })}
                                         onSubmitEditing={(event) => {
