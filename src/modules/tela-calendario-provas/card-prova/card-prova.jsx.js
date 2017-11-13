@@ -6,7 +6,7 @@ import styles from './styles';
 
 class CardProva extends Component {
     static propTypes = {
-        calendario: PropTypes.shape({
+        prova: PropTypes.shape({
             disciplina: PropTypes.object,
             avaliacoes: PropTypes.array,
         }).isRequired,
@@ -16,16 +16,16 @@ class CardProva extends Component {
         super(props);
 
         this.state = {
-            calendario: this.props.calendario,
+            calendario: this.props.prova,
         };
     }
 
     render() {
-        const { calendario } = this.props;
+        const { prova } = this.props;
         return (
             <Card style={styles.card}>
                 <CardItem header>
-                    <H3>{calendario.disciplina.codigo} - {calendario.disciplina.nome}</H3>
+                    <H3>{prova.disciplina.codigo} - {prova.disciplina.nome}</H3>
                 </CardItem>
                 <CardItem style={styles.legendaContainer}>
                     <Left>
@@ -34,7 +34,7 @@ class CardProva extends Component {
                     </Left>
                 </CardItem>
                 <List
-                    dataArray={calendario.avaliacoes}
+                    dataArray={prova.avaliacoes}
                     renderRow={data =>
                         (<ListItem style={styles.item}>
                             <Left>
