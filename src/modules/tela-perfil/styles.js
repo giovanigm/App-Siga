@@ -17,6 +17,12 @@ const styles = {
     indices: {
         marginTop: 30,
     },
+    progressBar: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#fafafa',
+    },
 };
 
 export default styles;
