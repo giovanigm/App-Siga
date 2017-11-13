@@ -1,11 +1,14 @@
 /* eslint-disable global-require */
 /* eslint-disable no-undef */
 import { createStore, applyMiddleware } from 'redux';
-import thunk from 'redux-thunk';
+import { createEpicMiddleware } from 'redux-observable';
 import logger from 'redux-logger';
+import rootEpic from '../config/rootEpic';
 import rootReducer from '../config/rootReducer';
 
-let middleware = [thunk];
+const epicMiddleware = createEpicMiddleware(rootEpic);
+
+let middleware = [epicMiddleware];
 
 if (__DEV__) {
     const reduxImmutableStateInvariant = require('redux-immutable-state-invariant').default();
