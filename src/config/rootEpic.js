@@ -8,6 +8,7 @@ import fetchAlunoNotasEpic from '../modules/tela-notas-faltas/epic';
 import fetchAlunoDisciplinasEpic from '../modules/tela-disciplinas/epic';
 
 import fetchDisciplinaAulasEpic from '../modules/tela-menu-disciplina/tela-aulas-disciplina/epic';
+import fetchDisciplinaMateriaisEpic from '../modules/tela-menu-disciplina/tela-material-disciplina/epic';
 
 const rootEpic = combineEpics(
     fetchAvisosEpic,
@@ -18,6 +19,7 @@ const rootEpic = combineEpics(
     fetchAlunoNotasEpic,
     fetchAlunoDisciplinasEpic,
     fetchDisciplinaAulasEpic,
+    fetchDisciplinaMateriaisEpic,
 );
 
 export default rootEpic;

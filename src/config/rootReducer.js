@@ -9,6 +9,7 @@ import notas from '../modules/tela-notas-faltas/reducer';
 import disciplinas from '../modules/tela-disciplinas/reducer';
 
 import aulas from '../modules/tela-menu-disciplina/tela-aulas-disciplina/reducer';
+import materiais from '../modules/tela-menu-disciplina/tela-material-disciplina/reducer';
 
 const rootReducer = combineReducers({
     login,
@@ -20,6 +21,7 @@ const rootReducer = combineReducers({
     notas,
     disciplinas,
     aulas,
+    materiais,
 });
 
 export default rootReducer;

@@ -1,51 +1,68 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Container, Content, List } from 'native-base';
+import { Container, Content, List, Spinner } from 'native-base';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+
+import * as materiaisActions from './actions';
 
 import CardMaterial from './card-material';
 
 import styles from './styles';
 
-const materiais = [
-    {
-        tipoArquivo: 'PDF',
-        nome: 'Ética e responsabilidade Social',
-        descricao: 'Conteúdo de aula',
-        link: 'http://google.com',
-    },
-    {
-        tipoArquivo: 'ZIP',
-        nome: 'Instalação...',
-        descricao: 'Prolog',
-        link: 'http://google.com',
-    },
-    {
-        tipoArquivo: 'PDF',
-        nome: 'Agentes Inteligentes',
-        descricao: 'Agentes Inteligentes',
-        link: 'http://google.com',
-    },
-];
 
 class TelaMaterialDisciplina extends Component {
     static navigatorStyle = styles.navigatorStyle;
 
     static propTypes = {
+        actions: PropTypes.shape({
+            fetchDisciplinaMateriais: PropTypes.func,
+        }).isRequired,
+        materiais: PropTypes.shape({
+            data: PropTypes.array,
+            isFetching: false,
+        }).isRequired,
+    }
 
+    componentWillMount() {
+        this.fetchDisciplinaMateriais('HSO003');
+    }
+
+    onRefresh(codigo) {
+        this.fetchDisciplinaMateriais(codigo);
+    }
+
+    fetchDisciplinaMateriais(codigo) {
+        this.props.actions.fetchDisciplinaMateriais(codigo);
     }
 
     render() {
         return (
-            <Container style={styles.container}>
-                <Content>
-                    <List
-                        dataArray={materiais}
-                        renderRow={data =>
-                            (<CardMaterial material={data} />)} />
-                </Content>
-            </Container>
+            this.props.materiais.isFetching ?
+                <Container style={styles.progressBar}><Spinner color="orange" /></Container>
+                : <Container style={styles.container}>
+                    <Content>
+                        <List
+                            dataArray={this.props.materiais.data}
+                            renderRow={data =>
+                                (<CardMaterial material={data} />)} />
+                    </Content>
+                </Container>
         );
     }
 }
 
-export default TelaMaterialDisciplina;
+function mapStateToProps(state, ownProps) {
+    return {
+        materiais: state.materiais,
+    };
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        actions: bindActionCreators(materiaisActions, dispatch),
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(TelaMaterialDisciplina);
+
