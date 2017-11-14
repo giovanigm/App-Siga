@@ -1,103 +1,74 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Container, Content, List, ListItem, Text } from 'native-base';
+import { Container, Content, Spinner, List, ListItem, Text } from 'native-base';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+
+import * as historicoActions from './actions';
 
 import CardDisciplina from './card-disciplina';
 
 import styles from './styles';
 
-const historico = [
-    {
-        periodo: 1,
-        disciplinas: [
-            {
-                codigo: 'AAG001',
-                nome: 'Administração Geral',
-                aprovado: 'Sim',
-                mediaFinal: 8.2,
-                frequencia: 100,
-                observação: 'Aluno muito louco de alcool e entorpecentes',
-            },
-            {
-                codigo: 'MMD001',
-                nome: 'Matemática Discreta',
-                aprovado: 'Sim',
-                mediaFinal: 8.2,
-                frequencia: 100,
-                observação: 'Aluno muito louco de alcool e entorpecentes',
-            },
-        ],
-    },
-    {
-        periodo: 2,
-        disciplinas: [
-            {
-                codigo: 'ISO100',
-                nome: 'Sistemas Operacionais I',
-                aprovado: 'Sim',
-                mediaFinal: 8.2,
-                frequencia: 100,
-                observação: 'Aluno muito louco de alcool e entorpecentes',
-            },
-            {
-                codigo: 'ILP010',
-                nome: 'Linguagem de Programação',
-                aprovado: 'Sim',
-                mediaFinal: 8.2,
-                frequencia: 100,
-                observação: 'Aluno muito louco de alcool e entorpecentes',
-            },
-        ],
-    },
-    {
-        periodo: 3,
-        disciplinas: [
-            {
-                codigo: 'ISO100',
-                nome: 'Sistemas Operacionais I',
-                aprovado: 'Sim',
-                mediaFinal: 8.2,
-                frequencia: 100,
-                observação: 'Aluno muito louco de alcool e entorpecentes',
-            },
-            {
-                codigo: 'ILP010',
-                nome: 'Linguagem de Programação',
-                aprovado: 'Sim',
-                mediaFinal: 8.2,
-                frequencia: 100,
-                observação: 'Aluno muito louco de alcool e entorpecentes',
-            },
-        ],
-    },
-];
 
 class TelaHistorico extends Component {
     static navigatorStyle = styles.navigatorStyle;
 
     static propTypes = {
+        actions: PropTypes.shape({
+            fetchAlunoHistorico: PropTypes.func,
+        }).isRequired,
+        historico: PropTypes.shape({
+            data: PropTypes.array,
+            isFetching: false,
+        }).isRequired,
+    }
 
+    componentWillMount() {
+        this.fetchAlunoHistorico('123456789');
+    }
+
+    onRefresh(usuario) {
+        this.fetchAlunoHistorico(usuario);
+    }
+
+    fetchAlunoHistorico(usuario) {
+        this.props.actions.fetchAlunoHistorico(usuario);
     }
 
     render() {
         return (
-            <Container style={styles.container}>
-                <Content>
-                    <List
-                        dataArray={historico}
-                        renderRow={data =>
-                            (<Content>
-                                <ListItem itemDivider>
-                                    <Text>{data.periodo}º Período</Text>
-                                </ListItem>
-                                <List
-                                    dataArray={data.disciplinas}
-                                    renderRow={dadosDisciplina => (<CardDisciplina disciplina={dadosDisciplina} />)} />
-                            </Content>)} />
-                </Content>
-            </Container>
+            this.props.historico.isFetching ?
+                <Container style={styles.progressBar}><Spinner color="orange" /></Container>
+                : <Container style={styles.container}>
+                    <Content>
+                        <List
+                            dataArray={this.props.historico.data}
+                            renderRow={data =>
+                                (<Content>
+                                    <ListItem itemDivider>
+                                        <Text>{data.periodo}º Período</Text>
+                                    </ListItem>
+                                    <List
+                                        dataArray={data.disciplinas}
+                                        renderRow={dadosDisciplina => (<CardDisciplina disciplina={dadosDisciplina} />)} />
+                                </Content>)} />
+                    </Content>
+                </Container>
         );
     }
 }
 
-export default TelaHistorico;
+function mapStateToProps(state, ownProps) {
+    return {
+        historico: state.historico,
+    };
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        actions: bindActionCreators(historicoActions, dispatch),
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(TelaHistorico);
