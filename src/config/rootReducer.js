@@ -8,6 +8,8 @@ import historico from '../modules/tela-historico/reducer';
 import notas from '../modules/tela-notas-faltas/reducer';
 import disciplinas from '../modules/tela-disciplinas/reducer';
 
+import aulas from '../modules/tela-menu-disciplina/tela-aulas-disciplina/reducer';
+
 const rootReducer = combineReducers({
     login,
     avisos,
@@ -17,6 +19,7 @@ const rootReducer = combineReducers({
     historico,
     notas,
     disciplinas,
+    aulas,
 });
 
 export default rootReducer;

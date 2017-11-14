@@ -1,67 +1,67 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Container, Content, List } from 'native-base';
+import { Container, Content, List, Spinner } from 'native-base';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+
+import * as aulasActions from './actions';
 
 import CardAula from './card-aula';
 
 import styles from './styles';
 
-const aulas = [
-    {
-        numero: 1,
-        titulo: 'Apresentação  do cronograma- Liberdade e Responsabilidade',
-        descricao: 'Apresentação  do cronograma- Contrato pedagógico\nVerdade, Liberdade e Responsabilidade',
-        tipo: 'Teórico - Explicativa',
-        aulaMinistrada: {
-            data: '01/08/2017',
-            conteudo: 'Apresentação  do cronograma- Contrato pedagógico\nVerdade, Liberdade e Responsabilidade',
-            dicas: '',
-        },
-    },
-    {
-        numero: 2,
-        titulo: 'ética humana',
-        descricao: 'Consciência sobre ações e efeitos no âmbito profissional e pessoal',
-        tipo: 'Teórico - Explicativa',
-        aulaMinistrada: {
-            data: '08/08/2017',
-            conteudo: 'Consciência sobre ações e efeitos no âmbito profissional e pessoal',
-            dicas: '',
-        },
-    },
-    {
-        numero: 3,
-        titulo: 'Cidadania Corporativa',
-        descricao: 'Exercícios/ Filme.',
-        tipo: 'Teórico - Explicativa',
-    },
-    {
-        numero: 4,
-        titulo: 'Semana de Provas',
-        descricao: 'Avaliação',
-        tipo: 'pratica',
-    },
-];
-
 class TelaAulasDisciplina extends Component {
     static navigatorStyle = styles.navigatorStyle;
 
     static propTypes = {
+        actions: PropTypes.shape({
+            fetchDisciplinaAulas: PropTypes.func,
+        }).isRequired,
+        aulas: PropTypes.shape({
+            data: PropTypes.array,
+            isFetching: false,
+        }).isRequired,
+    }
 
+    componentWillMount() {
+        this.fetchDisciplinaAulas('HSO003');
+    }
+
+    onRefresh(codigo) {
+        this.fetchDisciplinaAulas(codigo);
+    }
+
+    fetchDisciplinaAulas(codigo) {
+        this.props.actions.fetchDisciplinaAulas(codigo);
     }
 
     render() {
         return (
-            <Container style={styles.container}>
-                <Content>
-                    <List
-                        dataArray={aulas}
-                        renderRow={data =>
-                            (<CardAula aula={data} />)} />
-                </Content>
-            </Container>
+            this.props.aulas.isFetching ?
+                <Container style={styles.progressBar}><Spinner color="orange" /></Container>
+                : <Container style={styles.container}>
+                    <Content>
+                        <List
+                            dataArray={this.props.aulas.data}
+                            renderRow={data =>
+                                (<CardAula aula={data} />)} />
+                    </Content>
+                </Container>
         );
     }
 }
 
-export default TelaAulasDisciplina;
+function mapStateToProps(state, ownProps) {
+    return {
+        aulas: state.aulas,
+    };
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        actions: bindActionCreators(aulasActions, dispatch),
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(TelaAulasDisciplina);
+
