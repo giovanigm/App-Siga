@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container } from 'native-base';
+import { Container, Content } from 'native-base';
 
 import CardApresentacao from './card-apresentacao';
 import CardAvaliacoes from './card-avaliacoes';
@@ -17,9 +17,11 @@ class TelaApresentacaoDisciplina extends Component {
     render() {
         return (
             <Container style={styles.container}>
-                <CardApresentacao />
-                <CardAvaliacoes />
-                <CardBibliografia />
+                <Content>
+                    <CardApresentacao />
+                    <CardAvaliacoes />
+                    <CardBibliografia />
+                </Content>
             </Container>
         );
     }

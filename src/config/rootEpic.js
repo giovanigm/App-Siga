@@ -11,6 +11,7 @@ import fetchDisciplinaAulasEpic from '../modules/tela-menu-disciplina/tela-aulas
 import fetchDisciplinaMateriaisEpic from '../modules/tela-menu-disciplina/tela-material-disciplina/epic';
 import fetchDisciplinaApresentacaoEpic from '../modules/tela-menu-disciplina/tela-apresentacao-disciplina/card-apresentacao/epic';
 import fetchDisciplinaAvaliacoesEpic from '../modules/tela-menu-disciplina/tela-apresentacao-disciplina/card-avaliacoes/epic';
+import fetchDisciplinaBibliografiaEpic from '../modules/tela-menu-disciplina/tela-apresentacao-disciplina/card-bibliografia/epic';
 
 
 const rootEpic = combineEpics(
@@ -25,6 +26,7 @@ const rootEpic = combineEpics(
     fetchDisciplinaMateriaisEpic,
     fetchDisciplinaApresentacaoEpic,
     fetchDisciplinaAvaliacoesEpic,
+    fetchDisciplinaBibliografiaEpic,
 );
 
 export default rootEpic;

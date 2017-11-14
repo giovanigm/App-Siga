@@ -1,42 +1,69 @@
 import React, { Component } from 'react';
-import { List, Card, CardItem, Text, Left, H3 } from 'native-base';
+import { List, Card, CardItem, Text, Left, H3, Spinner } from 'native-base';
 import PropTypes from 'prop-types';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+
+import * as bibliografiaActions from './actions';
 
 import styles from './styles';
 
 class CardBibliografia extends Component {
     static propTypes = {
-        bibliografias: PropTypes.arrayOf({
-            bibliografia: PropTypes.string,
+        actions: PropTypes.shape({
+            fetchDisciplinaBibliografia: PropTypes.func,
+        }).isRequired,
+        bibliografia: PropTypes.shape({
+            data: PropTypes.array,
+            isFetching: false,
         }).isRequired,
     };
 
-    constructor(props) {
-        super(props);
+    componentWillMount() {
+        this.fetchDisciplinaBibliografia('HSO003');
+    }
 
-        this.state = {
-            bibliografias: this.props.bibliografias,
-        };
+    onRefresh(codigo) {
+        this.fetchDisciplinaBibliografia(codigo);
+    }
+
+    fetchDisciplinaBibliografia(codigo) {
+        this.props.actions.fetchDisciplinaBibliografia(codigo);
     }
 
     render() {
-        const { bibliografias } = this.props;
+        const { bibliografia } = this.props;
         return (
-            <Card style={styles.card}>
-                <CardItem header>
-                    <H3>Bibliografia</H3>
-                </CardItem>
-                <List
-                    dataArray={bibliografias}
-                    renderRow={data =>
-                        (<CardItem style={styles.item}>
-                            <Left>
-                                <Text style={styles.text}>{data}</Text>
-                            </Left>
-                        </CardItem>)} />
-            </Card>
+            this.props.bibliografia.isFetching ?
+                <Card style={styles.progressBar}><Spinner color="orange" /></Card>
+                : <Card style={styles.card}>
+                    <CardItem header>
+                        <H3>Bibliografia</H3>
+                    </CardItem>
+                    <List
+                        dataArray={bibliografia.data}
+                        renderRow={data =>
+                            (<CardItem style={styles.item}>
+                                <Left>
+                                    <Text style={styles.text}>{data}</Text>
+                                </Left>
+                            </CardItem>)} />
+                </Card>
         );
     }
 }
 
-export default CardBibliografia;
+function mapStateToProps(state, ownProps) {
+    return {
+        bibliografia: state.bibliografia,
+    };
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        actions: bindActionCreators(bibliografiaActions, dispatch),
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CardBibliografia);
+
