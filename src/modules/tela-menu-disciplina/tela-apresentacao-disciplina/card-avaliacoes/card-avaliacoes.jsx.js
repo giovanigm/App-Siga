@@ -1,35 +1,60 @@
 import React, { Component } from 'react';
-import { Card, CardItem, Text, Left, H3 } from 'native-base';
+import { Card, CardItem, Spinner, Left, H3 } from 'native-base';
 import PropTypes from 'prop-types';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+
+import * as avaliacoesActions from './actions';
 
 import styles from './styles';
 
 class CardAvaliacoes extends Component {
     static propTypes = {
-        horario: PropTypes.shape({
-            dia: PropTypes.string,
-            horarios: PropTypes.array,
+        actions: PropTypes.shape({
+            fetchDisciplinaAvaliacoes: PropTypes.func,
+        }).isRequired,
+        avaliacoes: PropTypes.shape({
+            data: PropTypes.object,
+            isFetching: false,
         }).isRequired,
     };
 
-    constructor(props) {
-        super(props);
+    componentWillMount() {
+        this.fetchDisciplinaAvaliacoes('HSO003');
+    }
 
-        this.state = {
-            horario: this.props.horario,
-        };
+    onRefresh(codigo) {
+        this.fetchDisciplinaAvaliacoes(codigo);
+    }
+
+    fetchDisciplinaAvaliacoes(codigo) {
+        this.props.actions.fetchDisciplinaAvaliacoes(codigo);
     }
 
     render() {
-        const { horario } = this.props;
+        const { avaliacoes } = this.props;
         return (
-            <Card style={styles.card}>
-                <CardItem header>
-                    <H3>{horario.dia}</H3>
-                </CardItem>
-            </Card>
+            this.props.avaliacoes.isFetching ?
+                <Card style={styles.progressBar}><Spinner color="orange" /></Card>
+                : <Card style={styles.card}>
+                    <CardItem header>
+                        <H3 />
+                    </CardItem>
+                </Card>
         );
     }
 }
 
-export default CardAvaliacoes;
+function mapStateToProps(state, ownProps) {
+    return {
+        avaliacoes: state.avaliacoes,
+    };
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        actions: bindActionCreators(avaliacoesActions, dispatch),
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CardAvaliacoes);

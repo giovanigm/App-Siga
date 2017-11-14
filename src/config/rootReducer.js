@@ -11,6 +11,7 @@ import disciplinas from '../modules/tela-disciplinas/reducer';
 import aulas from '../modules/tela-menu-disciplina/tela-aulas-disciplina/reducer';
 import materiais from '../modules/tela-menu-disciplina/tela-material-disciplina/reducer';
 import apresentacao from '../modules/tela-menu-disciplina/tela-apresentacao-disciplina/card-apresentacao/reducer';
+import avaliacoes from '../modules/tela-menu-disciplina/tela-apresentacao-disciplina/card-avaliacoes/reducer';
 
 const rootReducer = combineReducers({
     login,
@@ -24,6 +25,7 @@ const rootReducer = combineReducers({
     aulas,
     materiais,
     apresentacao,
+    avaliacoes,
 });
 
 export default rootReducer;
