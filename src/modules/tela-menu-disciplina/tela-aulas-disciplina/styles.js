@@ -9,6 +9,12 @@ const styles = {
     container: {
         backgroundColor: '#fafafa',
     },
+    progressBar: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#fafafa',
+    },
 };
 
 export default styles;
