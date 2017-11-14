@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { Container, Content, List } from 'native-base';
+import { Container } from 'native-base';
+
+import CardApresentacao from './card-apresentacao';
 
 import styles from './styles';
 
@@ -14,7 +15,7 @@ class TelaApresentacaoDisciplina extends Component {
     render() {
         return (
             <Container style={styles.container}>
-                
+                <CardApresentacao />
             </Container>
         );
     }

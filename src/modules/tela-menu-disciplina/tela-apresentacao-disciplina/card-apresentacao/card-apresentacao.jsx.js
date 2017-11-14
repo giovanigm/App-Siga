@@ -1,35 +1,61 @@
 import React, { Component } from 'react';
-import { Card, CardItem, Text, Left, H3 } from 'native-base';
+import { Card, CardItem, Spinner, Left, H3 } from 'native-base';
 import PropTypes from 'prop-types';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+
+import * as apresentacaoActions from './actions';
 
 import styles from './styles';
 
 class CardApresentacao extends Component {
     static propTypes = {
-        horario: PropTypes.shape({
-            dia: PropTypes.string,
-            horarios: PropTypes.array,
+        actions: PropTypes.shape({
+            fetchDisciplinaApresentacao: PropTypes.func,
+        }).isRequired,
+        apresentacao: PropTypes.shape({
+            data: PropTypes.object,
+            isFetching: false,
         }).isRequired,
     };
 
-    constructor(props) {
-        super(props);
+    componentWillMount() {
+        this.fetchDisciplinaApresentacao('HSO003');
+    }
 
-        this.state = {
-            horario: this.props.horario,
-        };
+    onRefresh(codigo) {
+        this.fetchDisciplinaApresentacao(codigo);
+    }
+
+    fetchDisciplinaApresentacao(codigo) {
+        this.props.actions.fetchDisciplinaApresentacao(codigo);
     }
 
     render() {
-        const { horario } = this.props;
+        const { apresentacao } = this.props;
         return (
-            <Card style={styles.card}>
-                <CardItem header>
-                    <H3>{horario.dia}</H3>
-                </CardItem>
-            </Card>
+            this.props.apresentacao.isFetching ?
+                <Card style={styles.progressBar}><Spinner color="orange" /></Card>
+                : <Card style={styles.card}>
+                    <CardItem header>
+                        <H3></H3>
+                    </CardItem>
+                </Card>
         );
     }
 }
 
-export default CardApresentacao;
+function mapStateToProps(state, ownProps) {
+    return {
+        apresentacao: state.apresentacao,
+    };
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        actions: bindActionCreators(apresentacaoActions, dispatch),
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CardApresentacao);
+
