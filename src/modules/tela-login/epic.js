@@ -5,7 +5,7 @@ import * as loginActions from './actions';
 import { login } from '../../api/apiClient';
 
 const loginEpic = action$ =>
-    action$.ofType(types.FETCH_ALUNO_login)
+    action$.ofType(types.LOGIN)
         .mergeMap(action =>
             Observable.fromPromise(login(action.payload.usuario, action.payload.senha))
                 .map(response => loginActions.loginSuccess(response.data))

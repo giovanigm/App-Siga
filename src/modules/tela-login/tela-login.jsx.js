@@ -48,18 +48,24 @@ class TelaLogin extends Component {
             side: 'left',
             enabled: false,
         });
+
+        this.login = this.login.bind(this);
     }
 
     login() {
         this.setState({ isLoading: true });
-        const loginObservable = Observable.from(this.props.actions.login(this.state.usuario, this.state.senha));
-        loginObservable.subscribe(() => {
-            this.setState({ isLoading: false });
-            this.navegaTelaPerfil(this.props.login.data.token);
-        });
+        const loginObservable = Observable.of(this.props.actions.login(this.state.usuario, this.state.senha));
+        loginObservable.subscribe(
+            x => this.setState({ isLoading: false }),
+            e => console.log(e),
+            () => {
+                if (this.props.login.data.success === true) {
+                    this.navegaTelaPerfil();
+                }
+            });
     }
 
-    navegaTelaPerfil = (token) => {
+    navegaTelaPerfil = () => {
         Navigation.startSingleScreenApp({
             screen: {
                 screen: 'app.Avisos',
@@ -70,12 +76,12 @@ class TelaLogin extends Component {
                         id: 'sideMenu',
                     },
                 ],
-                passProps: { token },
+                passProps: {},
             },
             drawer: {
                 left: {
                     screen: 'app.Drawer',
-                    passProps: { token },
+                    passProps: {},
                 },
                 disableOpenGesture: false,
             },

@@ -30,7 +30,7 @@ class TelaAvisos extends Component {
         };
     }
 
-    componentWillMount() {
+    componentDidMount() {
         this.fetchAvisos();
     }
 
