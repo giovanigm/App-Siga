@@ -25,15 +25,15 @@ class TelaNotasFaltas extends Component {
     }
 
     componentWillMount() {
-        this.fetchAlunoNotas('123456789');
+        this.fetchAlunoNotas();
     }
 
-    onRefresh(usuario) {
-        this.fetchAlunoNotas(usuario);
+    onRefresh() {
+        this.fetchAlunoNotas();
     }
 
-    fetchAlunoNotas(usuario) {
-        this.props.actions.fetchAlunoNotas(usuario);
+    fetchAlunoNotas() {
+        this.props.actions.fetchAlunoNotas();
     }
 
     render() {

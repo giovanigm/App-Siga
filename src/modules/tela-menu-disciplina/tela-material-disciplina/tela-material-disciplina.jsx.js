@@ -25,15 +25,15 @@ class TelaMaterialDisciplina extends Component {
     }
 
     componentWillMount() {
-        this.fetchDisciplinaMateriais('HSO003');
+        this.fetchDisciplinaMateriais();
     }
 
-    onRefresh(codigo) {
-        this.fetchDisciplinaMateriais(codigo);
+    onRefresh() {
+        this.fetchDisciplinaMateriais();
     }
 
-    fetchDisciplinaMateriais(codigo) {
-        this.props.actions.fetchDisciplinaMateriais(codigo);
+    fetchDisciplinaMateriais() {
+        this.props.actions.fetchDisciplinaMateriais();
     }
 
     render() {

@@ -18,6 +18,7 @@ class TelaDisciplinas extends Component {
         }).isRequired,
         actions: PropTypes.shape({
             fetchAlunoDisciplinas: PropTypes.func,
+            selecionaDisciplina: PropTypes.func,
         }).isRequired,
         disciplinas: PropTypes.shape({
             data: PropTypes.array,
@@ -26,21 +27,22 @@ class TelaDisciplinas extends Component {
     }
 
     componentWillMount() {
-        this.fetchAlunoDisciplinas('123456789');
+        this.fetchAlunoDisciplinas();
     }
 
-    onRefresh(usuario) {
-        this.fetchAlunoDisciplinas(usuario);
+    onRefresh() {
+        this.fetchAlunoDisciplinas();
     }
 
-    fetchAlunoDisciplinas(usuario) {
-        this.props.actions.fetchAlunoDisciplinas(usuario);
+    fetchAlunoDisciplinas() {
+        this.props.actions.fetchAlunoDisciplinas();
     }
 
-    navegaDisciplina = (nomeDisciplina) => {
+    navegaDisciplina = (disciplina) => {
+        this.props.actions.selecionaDisciplina(disciplina);
         this.props.navigator.push({
             screen: 'app.Disciplina',
-            title: nomeDisciplina,
+            title: disciplina.nome,
             topTabs: [{
                 screenId: 'app.Disciplina.Apresentacao',
                 title: 'Apresentação',
@@ -51,6 +53,7 @@ class TelaDisciplinas extends Component {
                 screenId: 'app.Disciplina.Aulas',
                 title: 'Aulas',
             }],
+            passProps: { disciplina },
         });
     }
 
@@ -63,7 +66,7 @@ class TelaDisciplinas extends Component {
                         <List
                             dataArray={this.props.disciplinas.data}
                             renderRow={data =>
-                                (<ListItem button onPress={() => this.navegaDisciplina(data.nome)} style={styles.item}>
+                                (<ListItem button onPress={() => this.navegaDisciplina(data)} style={styles.item}>
                                     <Left>
                                         <Text style={styles.text}>{data.codigo}</Text>
                                         <Text style={styles.text}>{data.nome}</Text>

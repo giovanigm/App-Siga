@@ -24,15 +24,15 @@ class TelaCalendarioProvas extends Component {
     }
 
     componentWillMount() {
-        this.fetchAlunoProvas('123456789');
+        this.fetchAlunoProvas();
     }
 
-    onRefresh(usuario) {
-        this.fetchAlunoProvas(usuario);
+    onRefresh() {
+        this.fetchAlunoProvas();
     }
 
-    fetchAlunoProvas(usuario) {
-        this.props.actions.fetchAlunoProvas(usuario);
+    fetchAlunoProvas() {
+        this.props.actions.fetchAlunoProvas();
     }
 
     render() {

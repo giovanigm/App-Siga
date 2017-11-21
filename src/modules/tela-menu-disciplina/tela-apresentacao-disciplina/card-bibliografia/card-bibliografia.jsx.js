@@ -20,15 +20,15 @@ class CardBibliografia extends Component {
     };
 
     componentWillMount() {
-        this.fetchDisciplinaBibliografia('HSO003');
+        this.fetchDisciplinaBibliografia();
     }
 
-    onRefresh(codigo) {
-        this.fetchDisciplinaBibliografia(codigo);
+    onRefresh() {
+        this.fetchDisciplinaBibliografia();
     }
 
-    fetchDisciplinaBibliografia(codigo) {
-        this.props.actions.fetchDisciplinaBibliografia(codigo);
+    fetchDisciplinaBibliografia() {
+        this.props.actions.fetchDisciplinaBibliografia();
     }
 
     render() {

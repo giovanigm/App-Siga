@@ -20,15 +20,15 @@ class CardAvaliacoes extends Component {
     };
 
     componentWillMount() {
-        this.fetchDisciplinaAvaliacoes('HSO003');
+        this.fetchDisciplinaAvaliacoes();
     }
 
-    onRefresh(codigo) {
-        this.fetchDisciplinaAvaliacoes(codigo);
+    onRefresh() {
+        this.fetchDisciplinaAvaliacoes();
     }
 
-    fetchDisciplinaAvaliacoes(codigo) {
-        this.props.actions.fetchDisciplinaAvaliacoes(codigo);
+    fetchDisciplinaAvaliacoes() {
+        this.props.actions.fetchDisciplinaAvaliacoes();
     }
 
     render() {
