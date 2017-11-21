@@ -24,7 +24,7 @@ export function login(usuario, senha) {
 
     const loginConfig = { usuario, senha };
 
-    return api.post(`${SERVER_URL}/api/login`, loginConfig);
+    return api.post(`${SERVER_URL}/api/alunos/login`, loginConfig);
 }
 
 export function fetchAvisos() {

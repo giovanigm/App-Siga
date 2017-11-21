@@ -1,4 +1,7 @@
 import { combineEpics } from 'redux-observable';
+
+import loginEpic from '../modules/tela-login/epic';
+
 import fetchAvisosEpic from '../modules/tela-avisos/epic';
 import fetchAlunoEpic from '../modules/tela-perfil/epic';
 import fetchAlunoHorarioEpic from '../modules/tela-horario/epic';
@@ -15,6 +18,7 @@ import fetchDisciplinaBibliografiaEpic from '../modules/tela-menu-disciplina/tel
 
 
 const rootEpic = combineEpics(
+    loginEpic,
     fetchAvisosEpic,
     fetchAlunoEpic,
     fetchAlunoHorarioEpic,

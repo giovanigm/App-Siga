@@ -11,6 +11,7 @@ import Spinner from 'react-native-loading-spinner-overlay';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { Observable } from 'rxjs';
 
 import * as loginActions from './actions';
 import BackgroundImage from '../../../assets/images/background.jpg';
@@ -24,6 +25,13 @@ class TelaLogin extends Component {
         navigator: PropTypes.shape({
             resetTo: PropTypes.func,
             setDrawerEnabled: PropTypes.func,
+        }).isRequired,
+        actions: PropTypes.shape({
+            login: PropTypes.func,
+        }).isRequired,
+        login: PropTypes.shape({
+            data: PropTypes.object,
+            isFetching: false,
         }).isRequired,
     };
 
@@ -42,7 +50,16 @@ class TelaLogin extends Component {
         });
     }
 
-    navegaTelaPerfil = () => {
+    login() {
+        this.setState({ isLoading: true });
+        const loginObservable = Observable.from(this.props.actions.login(this.state.usuario, this.state.senha));
+        loginObservable.subscribe(() => {
+            this.setState({ isLoading: false });
+            this.navegaTelaPerfil(this.props.login.data.token);
+        });
+    }
+
+    navegaTelaPerfil = (token) => {
         Navigation.startSingleScreenApp({
             screen: {
                 screen: 'app.Avisos',
@@ -53,11 +70,12 @@ class TelaLogin extends Component {
                         id: 'sideMenu',
                     },
                 ],
+                passProps: { token },
             },
             drawer: {
                 left: {
                     screen: 'app.Drawer',
-                    passProps: {},
+                    passProps: { token },
                 },
                 disableOpenGesture: false,
             },
@@ -107,7 +125,7 @@ class TelaLogin extends Component {
                                 <Button
                                     block
                                     style={styles.buttonContainer}
-                                    onPress={this.navegaTelaPerfil}>
+                                    onPress={this.login}>
                                     <Text style={styles.buttonText}>ENTRAR</Text>
                                 </Button>
                             </Form>
@@ -121,4 +139,16 @@ class TelaLogin extends Component {
 }
 
 
-export default TelaLogin;
+function mapStateToProps(state, ownProps) {
+    return {
+        login: state.login,
+    };
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        actions: bindActionCreators(loginActions, dispatch),
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(TelaLogin);
