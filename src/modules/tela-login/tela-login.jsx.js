@@ -31,7 +31,7 @@ class TelaLogin extends Component {
         }).isRequired,
         login: PropTypes.shape({
             data: PropTypes.object,
-            isFetching: false,
+            isFetching: PropTypes.bool,
         }).isRequired,
     };
 

@@ -19,7 +19,7 @@ class TelaHorario extends Component {
         }).isRequired,
         horario: PropTypes.shape({
             data: PropTypes.array,
-            isFetching: false,
+            isFetching: PropTypes.bool,
         }).isRequired,
     }
 

@@ -20,7 +20,7 @@ class TelaHistorico extends Component {
         }).isRequired,
         historico: PropTypes.shape({
             data: PropTypes.array,
-            isFetching: false,
+            isFetching: PropTypes.bool,
         }).isRequired,
     }
 

@@ -19,7 +19,7 @@ class TelaCalendarioProvas extends Component {
         }).isRequired,
         provas: PropTypes.shape({
             data: PropTypes.array,
-            isFetching: false,
+            isFetching: PropTypes.bool,
         }).isRequired,
     }
 

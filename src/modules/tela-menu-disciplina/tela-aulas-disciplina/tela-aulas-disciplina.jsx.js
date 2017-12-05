@@ -19,7 +19,7 @@ class TelaAulasDisciplina extends Component {
         }).isRequired,
         aulas: PropTypes.shape({
             data: PropTypes.array,
-            isFetching: false,
+            isFetching: PropTypes.bool,
         }).isRequired,
     }
 

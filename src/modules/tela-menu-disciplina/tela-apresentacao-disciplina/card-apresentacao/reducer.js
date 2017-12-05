@@ -7,7 +7,7 @@ export const types = {
 const initialState = {
     data: {},
     dataFetched: false,
-    isFetching: false,
+    isFetching: true,
     error: false,
 };
 

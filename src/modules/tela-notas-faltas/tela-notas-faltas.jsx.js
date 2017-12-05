@@ -20,7 +20,7 @@ class TelaNotasFaltas extends Component {
         }).isRequired,
         notas: PropTypes.shape({
             data: PropTypes.array,
-            isFetching: false,
+            isFetching: PropTypes.bool,
         }).isRequired,
     }
 

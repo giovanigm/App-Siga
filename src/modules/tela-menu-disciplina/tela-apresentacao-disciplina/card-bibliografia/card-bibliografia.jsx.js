@@ -15,7 +15,7 @@ class CardBibliografia extends Component {
         }).isRequired,
         bibliografia: PropTypes.shape({
             data: PropTypes.array,
-            isFetching: false,
+            isFetching: PropTypes.bool,
         }).isRequired,
     };
 

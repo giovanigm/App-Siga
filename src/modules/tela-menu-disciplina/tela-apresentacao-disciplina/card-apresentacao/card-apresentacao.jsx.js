@@ -15,7 +15,7 @@ class CardApresentacao extends Component {
         }).isRequired,
         apresentacao: PropTypes.shape({
             data: PropTypes.object,
-            isFetching: false,
+            isFetching: PropTypes.bool,
         }).isRequired,
     };
 
@@ -67,7 +67,6 @@ class CardApresentacao extends Component {
                     <CardItem>
                         <Text>Totais: {apresentacao.data.cargas.totais}</Text>
                     </CardItem>
-
                 </Card>
         );
     }

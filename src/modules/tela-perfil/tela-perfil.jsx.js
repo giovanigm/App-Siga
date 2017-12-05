@@ -17,7 +17,7 @@ class TelaPerfil extends Component {
         }).isRequired,
         perfil: PropTypes.shape({
             data: PropTypes.object,
-            isFetching: false,
+            isFetching: PropTypes.bool,
         }).isRequired,
     }
 

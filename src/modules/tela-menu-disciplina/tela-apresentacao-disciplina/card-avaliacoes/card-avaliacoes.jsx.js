@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, CardItem, Spinner, Left, H3 } from 'native-base';
+import { Card, CardItem, Spinner, Left, H3, Text, List } from 'native-base';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -15,7 +15,7 @@ class CardAvaliacoes extends Component {
         }).isRequired,
         avaliacoes: PropTypes.shape({
             data: PropTypes.object,
-            isFetching: false,
+            isFetching: PropTypes.bool,
         }).isRequired,
     };
 
@@ -38,8 +38,22 @@ class CardAvaliacoes extends Component {
                 <Card style={styles.progressBar}><Spinner color="orange" /></Card>
                 : <Card style={styles.card}>
                     <CardItem header>
-                        <H3 />
+                        <Text>Fórmula: {avaliacoes.data.formula}</Text>
                     </CardItem>
+                    <CardItem>
+                        <Text>Observações: {avaliacoes.data.observacoes}</Text>
+                    </CardItem>
+                    <List
+                        dataArray={avaliacoes.data.avaliacoes}
+                        renderRow={data =>
+                            (<CardItem style={styles.item}>
+                                <Left>
+                                    <Text style={styles.text}>{data.codigo} - {data.nome}</Text>
+                                </Left>
+                                <Left>
+                                    <Text style={styles.text}>{data.descricao}</Text>
+                                </Left>
+                            </CardItem>)} />
                 </Card>
         );
     }

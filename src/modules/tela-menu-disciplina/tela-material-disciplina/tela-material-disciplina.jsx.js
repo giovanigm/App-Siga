@@ -20,7 +20,7 @@ class TelaMaterialDisciplina extends Component {
         }).isRequired,
         materiais: PropTypes.shape({
             data: PropTypes.array,
-            isFetching: false,
+            isFetching: PropTypes.bool,
         }).isRequired,
     }
 
