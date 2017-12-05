@@ -25,15 +25,15 @@ class TelaHistorico extends Component {
     }
 
     componentWillMount() {
-        this.fetchAlunoHistorico('123456789');
+        this.fetchAlunoHistorico();
     }
 
-    onRefresh(usuario) {
-        this.fetchAlunoHistorico(usuario);
+    onRefresh() {
+        this.fetchAlunoHistorico();
     }
 
-    fetchAlunoHistorico(usuario) {
-        this.props.actions.fetchAlunoHistorico(usuario);
+    fetchAlunoHistorico() {
+        this.props.actions.fetchAlunoHistorico();
     }
 
     render() {

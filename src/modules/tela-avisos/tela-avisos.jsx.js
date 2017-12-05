@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import { Platform } from 'react-native';
 import PropTypes from 'prop-types';
 import { Container, Content, List, Spinner } from 'native-base';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import Ionicon from 'react-native-vector-icons/Ionicons';
 
 import * as avisosActions from './actions';
 
@@ -14,6 +16,9 @@ class TelaAvisos extends Component {
     static navigatorStyle = styles.navigatorStyle;
 
     static propTypes = {
+        navigator: PropTypes.shape({
+            setButtons: PropTypes.func,
+        }).isRequired,
         actions: PropTypes.shape({
             fetchAvisos: PropTypes.func,
         }).isRequired,
@@ -30,8 +35,20 @@ class TelaAvisos extends Component {
         };
     }
 
-    componentDidMount() {
+    componentWillMount() {
         this.fetchAvisos();
+    }
+
+    componentDidMount() {
+        if (Platform.OS === 'ios') {
+            Ionicon.getImageSource('ios-menu', 30).then((menu) => {
+                this.props.navigator.setButtons({
+                    leftButtons: [
+                        { id: 'sideMenu', icon: menu },
+                    ],
+                });
+            });
+        }
     }
 
     onRefresh() {

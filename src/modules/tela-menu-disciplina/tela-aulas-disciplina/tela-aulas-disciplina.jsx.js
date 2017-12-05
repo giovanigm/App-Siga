@@ -24,15 +24,15 @@ class TelaAulasDisciplina extends Component {
     }
 
     componentWillMount() {
-        this.fetchDisciplinaAulas('HSO003');
+        this.fetchDisciplinaAulas();
     }
 
-    onRefresh(codigo) {
-        this.fetchDisciplinaAulas(codigo);
+    onRefresh() {
+        this.fetchDisciplinaAulas();
     }
 
-    fetchDisciplinaAulas(codigo) {
-        this.props.actions.fetchDisciplinaAulas(codigo);
+    fetchDisciplinaAulas() {
+        this.props.actions.fetchDisciplinaAulas();
     }
 
     render() {

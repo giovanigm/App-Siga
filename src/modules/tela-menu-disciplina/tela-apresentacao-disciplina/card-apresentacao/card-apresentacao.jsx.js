@@ -20,15 +20,15 @@ class CardApresentacao extends Component {
     };
 
     componentWillMount() {
-        this.fetchDisciplinaApresentacao('HSO003');
+        this.fetchDisciplinaApresentacao();
     }
 
-    onRefresh(codigo) {
-        this.fetchDisciplinaApresentacao(codigo);
+    onRefresh() {
+        this.fetchDisciplinaApresentacao();
     }
 
-    fetchDisciplinaApresentacao(codigo) {
-        this.props.actions.fetchDisciplinaApresentacao(codigo);
+    fetchDisciplinaApresentacao() {
+        this.props.actions.fetchDisciplinaApresentacao();
     }
 
     render() {

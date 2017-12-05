@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import { Platform } from 'react-native';
 import PropTypes from 'prop-types';
 import { Container, Content, Spinner, Body, Card, CardItem, Text, H1, H2, List, ListItem } from 'native-base';
-import Ionicon from 'react-native-vector-icons/Ionicons';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
@@ -14,9 +12,6 @@ class TelaPerfil extends Component {
     static navigatorStyle = styles.navigatorStyle;
 
     static propTypes = {
-        navigator: PropTypes.shape({
-            setButtons: PropTypes.func,
-        }).isRequired,
         actions: PropTypes.shape({
             fetchAluno: PropTypes.func,
         }).isRequired,
@@ -27,27 +22,15 @@ class TelaPerfil extends Component {
     }
 
     componentWillMount() {
-        this.fetchAluno('123456789');
+        this.fetchAluno();
     }
 
-    componentDidMount() {
-        if (Platform.OS === 'ios') {
-            Ionicon.getImageSource('ios-menu', 30).then((menu) => {
-                this.props.navigator.setButtons({
-                    leftButtons: [
-                        { id: 'sideMenu', icon: menu },
-                    ],
-                });
-            });
-        }
+    onRefresh() {
+        this.fetchAluno();
     }
 
-    onRefresh(usuario) {
-        this.fetchAluno(usuario);
-    }
-
-    fetchAluno(usuario) {
-        this.props.actions.fetchAluno(usuario);
+    fetchAluno() {
+        this.props.actions.fetchAluno();
     }
 
 

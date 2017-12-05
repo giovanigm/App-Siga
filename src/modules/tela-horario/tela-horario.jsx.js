@@ -24,15 +24,15 @@ class TelaHorario extends Component {
     }
 
     componentWillMount() {
-        this.fetchAlunoHorario('123456789');
+        this.fetchAlunoHorario();
     }
 
-    onRefresh(usuario) {
-        this.fetchAlunoHorario(usuario);
+    onRefresh() {
+        this.fetchAlunoHorario();
     }
 
-    fetchAlunoHorario(usuario) {
-        this.props.actions.fetchAlunoHorario(usuario);
+    fetchAlunoHorario() {
+        this.props.actions.fetchAlunoHorario();
     }
 
     render() {

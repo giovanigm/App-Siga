@@ -1,8 +1,7 @@
 import { types } from './reducer';
 
-export const fetchAlunoNotas = usuario => ({
+export const fetchAlunoNotas = () => ({
     type: types.FETCH_ALUNO_NOTAS,
-    payload: usuario,
 });
 
 export const fetchAlunoNotasSuccess = payload => ({

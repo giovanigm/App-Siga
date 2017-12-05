@@ -1,8 +1,7 @@
 import { types } from './reducer';
 
-export const fetchDisciplinaBibliografia = codigo => ({
+export const fetchDisciplinaBibliografia = () => ({
     type: types.FETCH_DISCIPLINA_BIBLIOGRAFIA,
-    payload: codigo,
 });
 
 export const fetchDisciplinaBibliografiaSuccess = payload => ({

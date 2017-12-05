@@ -4,10 +4,10 @@ import { types } from './reducer';
 import * as provasActions from './actions';
 import { fetchAlunoProvas } from '../../api/apiClient';
 
-const fetchAlunoProvasEpic = action$ =>
+const fetchAlunoProvasEpic = (action$, store) =>
     action$.ofType(types.FETCH_ALUNO_PROVAS)
-        .mergeMap(action =>
-            Observable.fromPromise(fetchAlunoProvas(action.payload))
+        .mergeMap(() =>
+            Observable.fromPromise(fetchAlunoProvas(store.getState().login.data.usuario))
                 .map(response => provasActions.fetchAlunoProvasSuccess(response.data.provas))
                 .catch(error => Observable.of(provasActions.fetchAlunoProvasFailed(error))),
         );
