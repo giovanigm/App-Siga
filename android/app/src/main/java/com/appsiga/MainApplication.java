@@ -1,5 +1,6 @@
 package com.appsiga;
 
+import com.azendoo.reactnativesnackbar.SnackbarPackage;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
 import com.lugg.ReactNativeConfig.ReactNativeConfigPackage;
@@ -24,6 +25,7 @@ public class MainApplication extends NavigationApplication {
     return Arrays.<ReactPackage>asList(
             // eg. new VectorIconsPackage()
             new MainReactPackage(),
+            new SnackbarPackage(),
             new VectorIconsPackage(),
             new NavigationReactPackage(),
             new ReactNativeConfigPackage()

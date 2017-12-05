@@ -11,7 +11,6 @@ import Spinner from 'react-native-loading-spinner-overlay';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { Observable } from 'rxjs';
 
 import * as loginActions from './actions';
 import BackgroundImage from '../../../assets/images/background.jpg';
@@ -32,6 +31,7 @@ class TelaLogin extends Component {
         login: PropTypes.shape({
             data: PropTypes.object,
             isFetching: PropTypes.bool,
+            dataFetched: PropTypes.bool,
         }).isRequired,
     };
 
@@ -54,15 +54,7 @@ class TelaLogin extends Component {
 
     login = () => {
         this.setState({ isLoading: true });
-        const loginObservable = Observable.of(this.props.actions.login(this.state.usuario, this.state.senha)).delay(2000);
-        loginObservable.subscribe(
-            x => this.setState({ isLoading: false }),
-            e => console.log(e),
-            () => {
-                if (this.props.login.data.success === true) {
-                    this.navegaTelaPerfil();
-                }
-            });
+        this.props.actions.login(this.state.usuario, this.state.senha);
     }
 
     navegaTelaPerfil = () => {
@@ -89,6 +81,12 @@ class TelaLogin extends Component {
     }
 
     render() {
+        if (this.props.login.dataFetched === true) {
+            if (this.props.login.data.success === true) {
+                this.navegaTelaPerfil();
+            }
+        }
+
         return (
             <View style={styles.container}>
                 <Image source={BackgroundImage} style={styles.background}>
@@ -138,7 +136,7 @@ class TelaLogin extends Component {
                         </Content>
                     </View>
                 </Image>
-                <Spinner visible={this.state.isLoading} />
+                <Spinner visible={this.props.login.isFetching} />
             </View>
         );
     }

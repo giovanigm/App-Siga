@@ -24,6 +24,7 @@ export default function (state = initialState, action) {
             ...state,
             data: action.payload,
             isFetching: false,
+            dataFetched: true,
         };
     default:
         return state;
