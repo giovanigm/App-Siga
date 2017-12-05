@@ -52,9 +52,9 @@ class TelaLogin extends Component {
         this.login = this.login.bind(this);
     }
 
-    login() {
+    login = () => {
         this.setState({ isLoading: true });
-        const loginObservable = Observable.of(this.props.actions.login(this.state.usuario, this.state.senha));
+        const loginObservable = Observable.of(this.props.actions.login(this.state.usuario, this.state.senha)).delay(2000);
         loginObservable.subscribe(
             x => this.setState({ isLoading: false }),
             e => console.log(e),
