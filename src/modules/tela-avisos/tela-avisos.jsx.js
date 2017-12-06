@@ -62,7 +62,7 @@ class TelaAvisos extends Component {
     render() {
         return (
             this.props.avisos.isFetching ?
-                <Container style={styles.progressBar}><Spinner color="orange" /></Container>
+                <Container style={styles.progressBar}><Spinner color="#b42c2f" /></Container>
                 : <Container style={styles.container}>
                     <Content>
                         <List

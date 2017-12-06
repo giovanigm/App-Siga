@@ -27,6 +27,7 @@ class TelaLogin extends Component {
         }).isRequired,
         actions: PropTypes.shape({
             login: PropTypes.func,
+            loginSuccess: PropTypes.func,
         }).isRequired,
         login: PropTypes.shape({
             data: PropTypes.object,
@@ -50,6 +51,37 @@ class TelaLogin extends Component {
         });
 
         this.login = this.login.bind(this);
+        this.navegaTelaPerfil = this.navegaTelaPerfil.bind(this);
+        this.saveUserData = this.saveUserData.bind(this);
+    }
+
+    componentWillMount() {
+        try {
+            AsyncStorage.getItem('token').then((token) => {
+                if (token !== null) {
+                    AsyncStorage.getItem('usuario').then((usuario) => {
+                        const data = {
+                            token,
+                            usuario,
+                        };
+                        this.props.actions.loginSuccess(data);
+                        this.navegaTelaPerfil();
+                    });
+                }
+            });
+        } catch (error) {
+            console.log(error);
+        }
+        return '';
+    }
+
+    saveUserData = (data) => {
+        try {
+            AsyncStorage.setItem('token', data.token);
+            AsyncStorage.setItem('usuario', data.usuario);
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     login = () => {
@@ -83,6 +115,7 @@ class TelaLogin extends Component {
     render() {
         if (this.props.login.dataFetched === true) {
             if (this.props.login.data.success === true) {
+                this.saveUserData(this.props.login.data);
                 this.navegaTelaPerfil();
             }
         }

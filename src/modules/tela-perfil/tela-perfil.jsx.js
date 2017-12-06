@@ -38,7 +38,7 @@ class TelaPerfil extends Component {
         const perfil = this.props.perfil.data;
         return (
             this.props.perfil.isFetching ?
-                <Container style={styles.progressBar}><Spinner color="orange" /></Container>
+                <Container style={styles.progressBar}><Spinner color="#b42c2f" /></Container>
                 : <Container style={styles.container}>
                     <Content>
                         <Card style={styles.card}>

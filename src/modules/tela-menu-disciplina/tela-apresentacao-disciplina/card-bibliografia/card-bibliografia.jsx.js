@@ -35,7 +35,7 @@ class CardBibliografia extends Component {
         const { bibliografia } = this.props;
         return (
             this.props.bibliografia.isFetching ?
-                <Card style={styles.progressBar}><Spinner color="orange" /></Card>
+                <Card style={styles.progressBar}><Spinner color="#b42c2f" /></Card>
                 : <Card style={styles.card}>
                     <CardItem header>
                         <H3>Bibliografia</H3>

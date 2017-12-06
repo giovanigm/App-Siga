@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Image } from 'react-native';
+import { Image, AsyncStorage } from 'react-native';
 import PropTypes from 'prop-types';
 import {
     Content,
@@ -81,6 +81,7 @@ class Drawer extends Component {
 
     navega = (menu) => {
         if (menu.icon === 'log-out') {
+            AsyncStorage.clear();
             this.props.navigator.resetTo({
                 screen: menu.route,
             });

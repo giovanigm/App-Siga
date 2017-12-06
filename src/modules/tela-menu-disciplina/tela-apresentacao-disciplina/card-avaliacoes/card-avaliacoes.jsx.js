@@ -35,7 +35,7 @@ class CardAvaliacoes extends Component {
         const { avaliacoes } = this.props;
         return (
             this.props.avaliacoes.isFetching ?
-                <Card style={styles.progressBar}><Spinner color="orange" /></Card>
+                <Card style={styles.progressBar}><Spinner color="#b42c2f" /></Card>
                 : <Card style={styles.card}>
                     <CardItem header>
                         <Text>Fórmula: {avaliacoes.data.formula}</Text>
