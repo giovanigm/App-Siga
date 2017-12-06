@@ -1,4 +1,7 @@
 import { combineReducers } from 'redux';
+
+import errorHandle from '../api/reducer';
+
 import login from '../modules/tela-login/reducer';
 import avisos from '../modules/tela-avisos/reducer';
 import perfil from '../modules/tela-perfil/reducer';
@@ -28,6 +31,7 @@ const rootReducer = combineReducers({
     apresentacao,
     avaliacoes,
     bibliografia,
+    errorHandle,
 });
 
 export default rootReducer;

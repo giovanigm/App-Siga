@@ -26,6 +26,11 @@ export default function (state = initialState, action) {
             isFetching: false,
             dataFetched: true,
         };
+    case types.LOGIN_FAILED:
+        return {
+            ...state,
+            isFetching: false,
+        };
     default:
         return state;
     }

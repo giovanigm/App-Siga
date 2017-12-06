@@ -10,6 +10,7 @@ import {
     Container,
     Left,
 } from 'native-base';
+import { Observable } from 'rxjs';
 
 import styles from './styles';
 
@@ -81,10 +82,14 @@ class Drawer extends Component {
 
     navega = (menu) => {
         if (menu.icon === 'log-out') {
-            AsyncStorage.clear();
-            this.props.navigator.resetTo({
-                screen: menu.route,
-            });
+            Observable.of(AsyncStorage.clear())
+                .subscribe({
+                    complete: () => {
+                        this.props.navigator.resetTo({
+                            screen: menu.route,
+                        });
+                    },
+                });
         } else {
             this.props.navigator.pop({
                 animated: false,

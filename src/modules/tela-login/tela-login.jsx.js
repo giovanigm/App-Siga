@@ -11,6 +11,8 @@ import Spinner from 'react-native-loading-spinner-overlay';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { Observable } from 'rxjs';
+import Snackbar from 'react-native-snackbar';
 
 import * as loginActions from './actions';
 import BackgroundImage from '../../../assets/images/background.jpg';
@@ -53,6 +55,7 @@ class TelaLogin extends Component {
         this.login = this.login.bind(this);
         this.navegaTelaPerfil = this.navegaTelaPerfil.bind(this);
         this.saveUserData = this.saveUserData.bind(this);
+        this.showMessage = this.showMessage.bind(this);
     }
 
     componentWillMount() {
@@ -112,11 +115,26 @@ class TelaLogin extends Component {
         });
     }
 
+    showMessage = (texto) => {
+        Observable.empty()
+            .delay(200)
+            .subscribe({
+                complete: () => {
+                    Snackbar.show({
+                        title: texto,
+                        duration: Snackbar.LENGTH_SHORT,
+                    });
+                },
+            });
+    }
+
     render() {
         if (this.props.login.dataFetched === true) {
             if (this.props.login.data.success === true) {
                 this.saveUserData(this.props.login.data);
                 this.navegaTelaPerfil();
+            } else {
+                // this.showMessage(this.props.login.data.message);
             }
         }
 

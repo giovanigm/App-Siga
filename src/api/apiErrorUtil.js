@@ -16,7 +16,7 @@ export function geraMensagemErro(errorCode, navigator) { //eslint-disable-line
         texto = 'Erro interno do servidor';
         break;
     default:
-        texto = 'Algo deu errado, entre em contato com o CTI';
+        texto = 'Algo deu errado';
     }
 
     Snackbar.show({

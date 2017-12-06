@@ -1,5 +1,7 @@
 import { combineEpics } from 'redux-observable';
 
+import apiErrorEpic from '../api/apiErrorEpic';
+
 import loginEpic from '../modules/tela-login/epic';
 
 import fetchAvisosEpic from '../modules/tela-avisos/epic';
@@ -18,6 +20,7 @@ import fetchDisciplinaBibliografiaEpic from '../modules/tela-menu-disciplina/tel
 
 
 const rootEpic = combineEpics(
+    apiErrorEpic,
     loginEpic,
     fetchAvisosEpic,
     fetchAlunoEpic,
