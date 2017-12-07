@@ -133,8 +133,6 @@ class TelaLogin extends Component {
             if (this.props.login.data.success === true) {
                 this.saveUserData(this.props.login.data);
                 this.navegaTelaPerfil();
-            } else {
-                // this.showMessage(this.props.login.data.message);
             }
         }
 

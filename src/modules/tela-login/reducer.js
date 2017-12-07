@@ -2,6 +2,8 @@ export const types = {
     LOGIN: 'LOGIN',
     LOGIN_SUCCESS: 'LOGIN_SUCCESS',
     LOGIN_FAILED: 'API_REQUEST_FAILED',
+    LOGOUT: 'LOGOUT',
+    LOGOUT_SUCCESS: 'LOGOUT_SUCCESS',
 };
 
 const initialState = {
@@ -30,6 +32,10 @@ export default function (state = initialState, action) {
         return {
             ...state,
             isFetching: false,
+        };
+    case types.LOGOUT_SUCCESS:
+        return {
+            initialState,
         };
     default:
         return state;

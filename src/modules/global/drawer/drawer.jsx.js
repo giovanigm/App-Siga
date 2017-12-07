@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Image, AsyncStorage } from 'react-native';
+import { Image } from 'react-native';
 import PropTypes from 'prop-types';
 import {
     Content,
@@ -10,8 +10,10 @@ import {
     Container,
     Left,
 } from 'native-base';
-import { Observable } from 'rxjs';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 
+import * as drawerActions from './actions';
 import styles from './styles';
 
 const drawerCover = require('../../../../assets/images/drawer-cover.png');
@@ -70,6 +72,9 @@ class Drawer extends Component {
             toggleDrawer: PropTypes.func,
             resetTo: PropTypes.func,
         }).isRequired,
+        actions: PropTypes.shape({
+            logout: PropTypes.func,
+        }).isRequired,
     };
 
     constructor(props) {
@@ -82,14 +87,10 @@ class Drawer extends Component {
 
     navega = (menu) => {
         if (menu.icon === 'log-out') {
-            Observable.of(AsyncStorage.clear())
-                .subscribe({
-                    complete: () => {
-                        this.props.navigator.resetTo({
-                            screen: menu.route,
-                        });
-                    },
-                });
+            this.props.actions.logout();
+            this.props.navigator.resetTo({
+                screen: menu.route,
+            });
         } else {
             this.props.navigator.pop({
                 animated: false,
@@ -141,4 +142,17 @@ class Drawer extends Component {
     }
 }
 
-export default Drawer;
+function mapStateToProps(state, ownProps) {
+    return {
+        drawer: state.drawer,
+    };
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        actions: bindActionCreators(drawerActions, dispatch),
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Drawer);
+

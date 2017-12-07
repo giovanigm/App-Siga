@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 
+import drawer from '../modules/global/drawer/reducer';
 import errorHandle from '../api/reducer';
 
 import login from '../modules/tela-login/reducer';
@@ -32,6 +33,7 @@ const rootReducer = combineReducers({
     avaliacoes,
     bibliografia,
     errorHandle,
+    drawer,
 });
 
 export default rootReducer;
