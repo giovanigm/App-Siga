@@ -25,7 +25,7 @@ class CardHorario extends Component {
         return (
             <Card style={styles.card}>
                 <CardItem header>
-                    <H3>{horario.dia}</H3>
+                    <H3 style={styles.titulo}>{horario.dia}</H3>
                 </CardItem>
                 <CardItem style={styles.legendaContainer}>
                     <Left>
@@ -39,7 +39,7 @@ class CardHorario extends Component {
                         (<ListItem style={styles.item}>
                             <Left>
                                 <Text style={styles.text}>{data.hora}</Text>
-                                <Text style={styles.text}>{data.disciplina}</Text>
+                                <Text style={{ marginLeft: 25 }}>{data.disciplina}</Text>
                             </Left>
                         </ListItem>)} />
             </Card>

@@ -15,7 +15,7 @@ const styles = {
         marginRight: 10,
     },
     indices: {
-        marginTop: 30,
+        marginTop: 10,
     },
     progressBar: {
         flex: 1,

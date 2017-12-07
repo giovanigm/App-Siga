@@ -38,7 +38,7 @@ class CardApresentacao extends Component {
                 <Card style={styles.progressBar}><Spinner color="#b42c2f" /></Card>
                 : <Card style={styles.card}>
                     <CardItem header>
-                        <H3>{apresentacao.data.titulo}</H3>
+                        <H3 style={styles.titulo}>{apresentacao.data.titulo}</H3>
                     </CardItem>
                     <CardItem>
                         <Text>{apresentacao.data.apresentacao}</Text>
@@ -53,7 +53,7 @@ class CardApresentacao extends Component {
                         <Text>Objetivo: {apresentacao.data.objetivo}</Text>
                     </CardItem>
                     <CardItem>
-                        <H3>Cargas</H3>
+                        <H3 style={styles.titulo}>Carga Horária</H3>
                     </CardItem>
                     <CardItem>
                         <Text>Semanais: {apresentacao.data.cargas.semanais}</Text>

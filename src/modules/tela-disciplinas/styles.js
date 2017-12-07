@@ -1,3 +1,7 @@
+const React = require('react-native');
+
+const { Platform } = React;
+
 const styles = {
     navigatorStyle: {
         navBarTextColor: '#ffffff',
@@ -14,6 +18,26 @@ const styles = {
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#fafafa',
+    },
+    item: {
+        width: 380,
+        backgroundColor: 'rgba(0, 0, 0, 0.0)',
+    },
+    text: {
+        fontWeight: Platform.OS === 'ios' ? '500' : '400',
+        fontSize: 16,
+        marginLeft: 20,
+    },
+    itemContainer: {
+        flexDirection: 'row',
+        justifyContent: 'flex-start',
+    },
+    codigo: {
+        textAlign: 'center',
+    },
+    nome: {
+        textAlign: 'left',
+        marginLeft: 20,
     },
 };
 

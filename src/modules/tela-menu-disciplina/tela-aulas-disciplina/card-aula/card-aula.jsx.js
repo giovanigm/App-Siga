@@ -27,7 +27,7 @@ class CardAula extends Component {
         return (
             <Card style={styles.card}>
                 <CardItem header>
-                    <H3>{aula.numero.toString()} - {aula.titulo}</H3>
+                    <H3 style={styles.titulo}>{aula.numero.toString()} - {aula.titulo}</H3>
                 </CardItem>
                 <CardItem style={styles.legendaContainer}>
                     <Text>{aula.descricao}</Text>
@@ -36,7 +36,7 @@ class CardAula extends Component {
                     <Text>{aula.tipo}</Text>
                 </CardItem>
                 {aula.aulaMinistrada ? <Content>
-                    <CardItem><H3>Aula Ministrada</H3></CardItem>
+                    <CardItem><H3 style={styles.titulo}>Aula Ministrada</H3></CardItem>
                     <CardItem><Text>{aula.aulaMinistrada.data}</Text></CardItem>
                     <CardItem><Text>{aula.aulaMinistrada.conteudo}</Text></CardItem>
                     <CardItem><Text>{aula.aulaMinistrada.dicas}</Text></CardItem></Content> : <Text /> }

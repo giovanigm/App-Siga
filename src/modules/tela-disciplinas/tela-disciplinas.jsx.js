@@ -67,10 +67,10 @@ class TelaDisciplinas extends Component {
                             dataArray={this.props.disciplinas.data}
                             renderRow={data =>
                                 (<ListItem button onPress={() => this.navegaDisciplina(data)} style={styles.item}>
-                                    <Left>
-                                        <Text style={styles.text}>{data.codigo}</Text>
-                                        <Text style={styles.text}>{data.nome}</Text>
-                                    </Left>
+                                    <Content contentContainerStyle={styles.itemContainer}>
+                                        <Text style={styles.codigo}>{data.codigo}</Text>
+                                        <Text style={styles.nome}>{data.nome}</Text>
+                                    </Content>
                                 </ListItem>)} />
                     </Content>
                 </Container>

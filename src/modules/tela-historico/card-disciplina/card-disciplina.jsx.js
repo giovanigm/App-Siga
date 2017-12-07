@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { List, ListItem, Card, CardItem, Text, Left, H3 } from 'native-base';
+import { Content, ListItem, Card, CardItem, Text, Left, H3 } from 'native-base';
 import PropTypes from 'prop-types';
 
 import styles from './styles';
@@ -29,23 +29,27 @@ class CardDisciplina extends Component {
         return (
             <Card style={styles.card}>
                 <CardItem header>
-                    <H3>{disciplina.codigo} - {disciplina.nome}</H3>
+                    <H3 style={styles.titulo}>{disciplina.codigo} - {disciplina.nome}</H3>
                 </CardItem>
                 <CardItem>
-                    <Left>
-                        <Text>Aprovado</Text>
-                        <Text>Média Final</Text>
-                        <Text>Frequência</Text>
-                        <Text>Observação</Text>
-                    </Left>
+                    <Content contentContainerStyle={styles.legendaContainer}>
+                        <Text style={styles.legenda}>Aprovado</Text>
+                        <Text style={styles.legenda}>Média Final</Text>
+                        <Text style={styles.legenda}>Frequência</Text>
+                    </Content>
                 </CardItem>
                 <CardItem>
-                    <Left>
+                    <Content contentContainerStyle={styles.legendaContainer}>
                         <Text>{disciplina.aprovado}</Text>
                         <Text>{disciplina.mediaFinal}</Text>
                         <Text>{disciplina.frequencia}</Text>
-                        <Text>{disciplina.observação}</Text>
-                    </Left>
+                    </Content>
+                </CardItem>
+                <CardItem>
+                    <Text style={styles.legenda}>Observação</Text>
+                </CardItem>
+                <CardItem>
+                    <Text>{disciplina.observação}</Text>
                 </CardItem>
             </Card>
         );

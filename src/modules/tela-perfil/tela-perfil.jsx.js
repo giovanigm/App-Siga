@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Container, Content, Spinner, Body, Card, CardItem, Text, H1, H2, List, ListItem } from 'native-base';
+import { Container, Content, Thumbnail, Spinner, Card, CardItem, Left, Text, H1, H3, List, ListItem } from 'native-base';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
@@ -42,46 +42,47 @@ class TelaPerfil extends Component {
                 : <Container style={styles.container}>
                     <Content>
                         <Card style={styles.card}>
-                            <CardItem header>
-                                <H1>{perfil.nome}</H1>
+                            <CardItem>
+                                <Content contentContainerStyle={{ alignItems: 'center', marginTop: 10 }}>
+                                    <Thumbnail large source={{ uri: 'https://drive.google.com/uc?export=view&id=1E6vuipe8rcNbml3BBy2WGs4JyPDWyBI8' }} />
+                                </Content>
                             </CardItem>
                             <CardItem>
-                                <Body>
-                                    <Text>RA: {perfil.ra}</Text>
-                                </Body>
+                                <Content contentContainerStyle={{ alignItems: 'center' }}>
+                                    <H1>{perfil.nome}</H1>
+                                </Content>
+                            </CardItem>
+                            <CardItem>
+                                <Left><Text>RA: {perfil.ra}</Text></Left>
+                            </CardItem>
+                            <CardItem>
+                                <Left><Text>CPF : {perfil.cpf}</Text></Left>
+                            </CardItem>
+                            <CardItem>
+                                <Left><Text>Nascimento: {perfil.dataNascimento}</Text></Left>
                             </CardItem>
                             <CardItem style={styles.indices}>
-                                <Body>
-                                    <H2>E-mails</H2>
-                                </Body>
+                                <Content>
+                                    <H3>E-mails</H3>
+                                </Content>
                             </CardItem>
                             <CardItem>
                                 <List
                                     dataArray={perfil.emails}
                                     renderRow={data =>
-                                        (<ListItem style={styles.item}>
+                                        (<CardItem style={styles.item}>
                                             <Text>{data}</Text>
-                                        </ListItem>)} />
-                            </CardItem>
-                            <CardItem>
-                                <Body>
-                                    <Text>CPF : {perfil.cpf}</Text>
-                                </Body>
-                            </CardItem>
-                            <CardItem>
-                                <Body>
-                                    <Text>Nascimento: {perfil.dataNascimento}</Text>
-                                </Body>
+                                        </CardItem>)} />
                             </CardItem>
                             <CardItem style={styles.indices}>
-                                <Body>
-                                    <H2>Índices</H2>
-                                </Body>
+                                <Content>
+                                    <H3>Índices</H3>
+                                </Content>
                             </CardItem>
                             <CardItem>
-                                <Body>
+                                <Left>
                                     <Text>PP: {perfil.pp}        PR: {perfil.pr}</Text>
-                                </Body>
+                                </Left>
                             </CardItem>
                         </Card>
                     </Content>

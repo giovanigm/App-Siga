@@ -38,7 +38,7 @@ class CardBibliografia extends Component {
                 <Card style={styles.progressBar}><Spinner color="#b42c2f" /></Card>
                 : <Card style={styles.card}>
                     <CardItem header>
-                        <H3>Bibliografia</H3>
+                        <H3 style={styles.titulo}>Bibliografia</H3>
                     </CardItem>
                     <List
                         dataArray={bibliografia.data}

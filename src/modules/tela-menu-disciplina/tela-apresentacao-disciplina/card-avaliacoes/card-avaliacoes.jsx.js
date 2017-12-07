@@ -38,6 +38,9 @@ class CardAvaliacoes extends Component {
                 <Card style={styles.progressBar}><Spinner color="#b42c2f" /></Card>
                 : <Card style={styles.card}>
                     <CardItem header>
+                        <H3 style={styles.titulo}>Avaliações</H3>
+                    </CardItem>
+                    <CardItem>
                         <Text>Fórmula: {avaliacoes.data.formula}</Text>
                     </CardItem>
                     <CardItem>

@@ -28,7 +28,7 @@ class CardMaterial extends Component {
         return (
             <Card style={styles.card}>
                 <CardItem header>
-                    <H3>{material.tipoArquivo} - {material.nome}</H3>
+                    <H3 style={styles.titulo}>{material.tipoArquivo} - {material.nome}</H3>
                 </CardItem>
                 <CardItem>
                     <Body>
@@ -36,7 +36,7 @@ class CardMaterial extends Component {
                     </Body>
                 </CardItem>
                 <CardItem>
-                    <Button onPress={() => Linking.openURL(material.link)}>
+                    <Button style={{ backgroundColor: '#b42c2f' }} onPress={() => Linking.openURL(material.link)}>
                         <Text>Baixar</Text>
                     </Button>
                 </CardItem>
