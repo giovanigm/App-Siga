@@ -1,4 +1,4 @@
-import Snackbar from 'react-native-snackbar';
+import Toast from 'react-native-simple-toast';
 
 export function geraMensagemErro(errorCode) { //eslint-disable-line
     let texto = '';
@@ -19,8 +19,5 @@ export function geraMensagemErro(errorCode) { //eslint-disable-line
         texto = 'Algo deu errado';
     }
 
-    Snackbar.show({
-        title: texto,
-        duration: Snackbar.LENGTH_LONG,
-    });
+    Toast.show(texto, Toast.LONG);
 }

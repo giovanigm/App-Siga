@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Container, Content, Thumbnail, Spinner, Card, CardItem, Left, Text, H1, H3, List, ListItem } from 'native-base';
+import { Container, Content, Thumbnail, Spinner, Card, CardItem, Left, Text, H1, H3, List } from 'native-base';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
@@ -44,7 +44,7 @@ class TelaPerfil extends Component {
                         <Card style={styles.card}>
                             <CardItem>
                                 <Content contentContainerStyle={{ alignItems: 'center', marginTop: 10 }}>
-                                    <Thumbnail large source={{ uri: 'https://drive.google.com/uc?export=view&id=1E6vuipe8rcNbml3BBy2WGs4JyPDWyBI8' }} />
+                                    <Thumbnail large source={{ uri: perfil.urlFoto }} />
                                 </Content>
                             </CardItem>
                             <CardItem>
