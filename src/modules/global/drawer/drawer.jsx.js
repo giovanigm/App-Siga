@@ -18,7 +18,7 @@ import styles from './styles';
 
 const drawerCover = require('../../../../assets/images/drawer-cover.png');
 
-const drawerImage = require('../../../../assets/images/logo.png');
+const drawerImage = require('../../../../assets/images/logo_drawer.png');
 
 const datas = [
     {

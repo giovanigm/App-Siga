@@ -28,32 +28,38 @@ class CardProva extends Component {
         return (
             <Card style={styles.card}>
                 <CardItem header>
-                    <H3>{nota.disciplina.codigo} - {nota.disciplina.nome}</H3>
+                    <H3 style={styles.titulo}>{nota.disciplina.codigo} - {nota.disciplina.nome}</H3>
+                </CardItem>
+                <CardItem>
+                    <Text style={styles.legenda}>Geral</Text>
                 </CardItem>
                 <CardItem>
                     <Left>
-                        <Text>Média Final</Text>
+                        <Text>Média Final:</Text>
                         <Text>{nota.mediaFinal}</Text>
                     </Left>
                 </CardItem>
                 <CardItem>
                     <Left>
-                        <Text>Quantidade de Faltas</Text>
+                        <Text>Faltas:</Text>
                         <Text>{nota.faltas}</Text>
                     </Left>
                 </CardItem>
                 <CardItem>
                     <Left>
-                        <Text>Frequência</Text>
+                        <Text>Frequência:</Text>
                         <Text>{nota.frequencia}%</Text>
                     </Left>
+                </CardItem>
+                <CardItem>
+                    <Text style={styles.legenda}>Notas</Text>
                 </CardItem>
                 <List
                     dataArray={nota.avaliacoes}
                     renderRow={data =>
                         (<ListItem style={styles.item}>
                             <Left>
-                                <Text style={styles.text}>{data.codigo} - {data.avaliacao}</Text>
+                                <Text style={styles.text}>{data.avaliacao}:</Text>
                                 <Text style={styles.text}>{data.nota}</Text>
                             </Left>
                         </ListItem>)} />

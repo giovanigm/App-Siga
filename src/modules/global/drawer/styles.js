@@ -21,11 +21,11 @@ export default {
     drawerImage: {
         position: 'absolute',
         // left: (Platform.OS === 'android') ? 30 : 40,
-        left: Platform.OS === 'android' ? deviceWidth / 17 : deviceWidth / 9,
+        left: Platform.OS === 'android' ? deviceWidth / 10 : deviceWidth / 9,
         // top: (Platform.OS === 'android') ? 45 : 55,
         top: Platform.OS === 'android' ? deviceHeight / 13 : deviceHeight / 12,
-        width: 300,
-        height: 100,
+        width: 210,
+        height: 75,
         resizeMode: 'cover',
     },
     listItemContainer: {

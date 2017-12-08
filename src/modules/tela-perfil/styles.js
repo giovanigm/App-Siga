@@ -23,6 +23,9 @@ const styles = {
         alignItems: 'center',
         backgroundColor: '#fafafa',
     },
+    legenda: {
+        fontWeight: 'bold',
+    },
 };
 
 export default styles;

@@ -42,7 +42,7 @@ class CardDisciplina extends Component {
                     <Content contentContainerStyle={styles.legendaContainer}>
                         <Text>{disciplina.aprovado}</Text>
                         <Text>{disciplina.mediaFinal}</Text>
-                        <Text>{disciplina.frequencia}</Text>
+                        <Text>{disciplina.frequencia}%</Text>
                     </Content>
                 </CardItem>
                 <CardItem>

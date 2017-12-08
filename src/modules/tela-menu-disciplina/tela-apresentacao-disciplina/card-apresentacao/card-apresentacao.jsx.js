@@ -41,31 +41,40 @@ class CardApresentacao extends Component {
                         <H3 style={styles.titulo}>{apresentacao.data.titulo}</H3>
                     </CardItem>
                     <CardItem>
-                        <Text>{apresentacao.data.apresentacao}</Text>
+                        <Left><Text>{apresentacao.data.apresentacao}</Text></Left>
                     </CardItem>
                     <CardItem>
-                        <Text>Área: {apresentacao.data.area}</Text>
+                        <Text style={styles.legenda}>Área</Text>
                     </CardItem>
                     <CardItem>
-                        <Text>Ementa: {apresentacao.data.ementa}</Text>
+                        <Left><Text>{apresentacao.data.area}</Text></Left>
                     </CardItem>
                     <CardItem>
-                        <Text>Objetivo: {apresentacao.data.objetivo}</Text>
+                        <Text style={styles.legenda}>Ementa</Text>
                     </CardItem>
                     <CardItem>
-                        <H3 style={styles.titulo}>Carga Horária</H3>
+                        <Left><Text>{apresentacao.data.ementa}</Text></Left>
                     </CardItem>
                     <CardItem>
-                        <Text>Semanais: {apresentacao.data.cargas.semanais}</Text>
+                        <Text style={styles.legenda}>Objetivo</Text>
                     </CardItem>
                     <CardItem>
-                        <Text>Teóricas: {apresentacao.data.cargas.teoricas}</Text>
+                        <Left><Text>{apresentacao.data.objetivo}</Text></Left>
                     </CardItem>
                     <CardItem>
-                        <Text>Práticas: {apresentacao.data.cargas.praticas}</Text>
+                        <Text style={styles.legenda}>Carga Horária</Text>
                     </CardItem>
                     <CardItem>
-                        <Text>Totais: {apresentacao.data.cargas.totais}</Text>
+                        <Left><Text>Semanais: {apresentacao.data.cargas.semanais}</Text></Left>
+                    </CardItem>
+                    <CardItem>
+                        <Left><Text>Teóricas: {apresentacao.data.cargas.teoricas}</Text></Left>
+                    </CardItem>
+                    <CardItem>
+                        <Left><Text>Práticas: {apresentacao.data.cargas.praticas}</Text></Left>
+                    </CardItem>
+                    <CardItem>
+                        <Left><Text>Totais: {apresentacao.data.cargas.totais}</Text></Left>
                     </CardItem>
                 </Card>
         );

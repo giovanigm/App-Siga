@@ -7,6 +7,9 @@ const styles = {
     titulo: {
         lineHeight: 25,
     },
+    legenda: {
+        fontWeight: 'bold',
+    },
 };
 
 export default styles;

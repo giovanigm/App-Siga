@@ -41,17 +41,23 @@ class CardAvaliacoes extends Component {
                         <H3 style={styles.titulo}>Avaliações</H3>
                     </CardItem>
                     <CardItem>
-                        <Text>Fórmula: {avaliacoes.data.formula}</Text>
+                        <Text style={styles.legenda}>Fórmula</Text>
                     </CardItem>
                     <CardItem>
-                        <Text>Observações: {avaliacoes.data.observacoes}</Text>
+                        <Left><Text>{avaliacoes.data.formula}</Text></Left>
+                    </CardItem>
+                    <CardItem>
+                        <Text style={styles.legenda}>Observações</Text>
+                    </CardItem>
+                    <CardItem>
+                        <Left><Text>{avaliacoes.data.observacoes}</Text></Left>
                     </CardItem>
                     <List
                         dataArray={avaliacoes.data.avaliacoes}
                         renderRow={data =>
                             (<CardItem style={styles.item}>
                                 <Left>
-                                    <Text style={styles.text}>{data.codigo} - {data.nome}</Text>
+                                    <Text style={styles.text}>{data.nome}</Text>
                                 </Left>
                                 <Left>
                                     <Text style={styles.text}>{data.descricao}</Text>

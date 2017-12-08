@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Content, List, ListItem, Card, CardItem, Text, H3 } from 'native-base';
+import { Content, Left, Card, CardItem, Text, H3 } from 'native-base';
 import PropTypes from 'prop-types';
 
 import styles from './styles';
@@ -30,16 +30,16 @@ class CardAula extends Component {
                     <H3 style={styles.titulo}>{aula.numero.toString()} - {aula.titulo}</H3>
                 </CardItem>
                 <CardItem style={styles.legendaContainer}>
-                    <Text>{aula.descricao}</Text>
+                    <Left><Text>{aula.descricao}</Text></Left>
                 </CardItem>
                 <CardItem style={styles.legendaContainer}>
-                    <Text>{aula.tipo}</Text>
+                    <Left><Text>{aula.tipo}</Text></Left>
                 </CardItem>
                 {aula.aulaMinistrada ? <Content>
-                    <CardItem><H3 style={styles.titulo}>Aula Ministrada</H3></CardItem>
-                    <CardItem><Text>{aula.aulaMinistrada.data}</Text></CardItem>
-                    <CardItem><Text>{aula.aulaMinistrada.conteudo}</Text></CardItem>
-                    <CardItem><Text>{aula.aulaMinistrada.dicas}</Text></CardItem></Content> : <Text /> }
+                    <CardItem><Text style={styles.legenda}>Aula Ministrada</Text></CardItem>
+                    <CardItem><Left><Text>{aula.aulaMinistrada.data}</Text></Left></CardItem>
+                    <CardItem><Left><Text>{aula.aulaMinistrada.conteudo}</Text></Left></CardItem>
+                    <CardItem><Left><Text>{aula.aulaMinistrada.dicas}</Text></Left></CardItem></Content> : <Text /> }
             </Card>
         );
     }

@@ -52,6 +52,11 @@ class TelaPerfil extends Component {
                                     <H1>{perfil.nome}</H1>
                                 </Content>
                             </CardItem>
+                            <CardItem style={styles.indices}>
+                                <Content>
+                                    <Text style={styles.legenda}>Dados Gerais</Text>
+                                </Content>
+                            </CardItem>
                             <CardItem>
                                 <Left><Text>RA: {perfil.ra}</Text></Left>
                             </CardItem>
@@ -63,7 +68,7 @@ class TelaPerfil extends Component {
                             </CardItem>
                             <CardItem style={styles.indices}>
                                 <Content>
-                                    <H3>E-mails</H3>
+                                    <Text style={styles.legenda}>E-mails</Text>
                                 </Content>
                             </CardItem>
                             <CardItem>
@@ -76,7 +81,7 @@ class TelaPerfil extends Component {
                             </CardItem>
                             <CardItem style={styles.indices}>
                                 <Content>
-                                    <H3>Índices</H3>
+                                    <Text style={styles.legenda}>Índices</Text>
                                 </Content>
                             </CardItem>
                             <CardItem>
