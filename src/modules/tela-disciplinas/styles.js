@@ -1,6 +1,10 @@
 const React = require('react-native');
 
-const { Platform } = React;
+
+const { Platform, Dimensions } = React;
+
+const deviceHeight = Dimensions.get('window').height;
+const deviceWidth = Dimensions.get('window').width;
 
 const styles = {
     navigatorStyle: {
@@ -20,7 +24,7 @@ const styles = {
         backgroundColor: '#fafafa',
     },
     item: {
-        width: 380,
+        width: deviceWidth,
         backgroundColor: 'rgba(0, 0, 0, 0.0)',
     },
     text: {
@@ -38,6 +42,7 @@ const styles = {
     nome: {
         textAlign: 'left',
         marginLeft: 20,
+        marginRight: 100,
     },
 };
 

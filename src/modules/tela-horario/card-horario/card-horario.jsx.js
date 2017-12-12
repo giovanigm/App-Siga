@@ -39,7 +39,7 @@ class CardHorario extends Component {
                         (<ListItem style={styles.item}>
                             <Left>
                                 <Text style={styles.text}>{data.hora}</Text>
-                                <Text style={{ marginLeft: 25 }}>{data.disciplina}</Text>
+                                <Text style={{ marginLeft: 25, marginRight: 15 }}>{data.disciplina}</Text>
                             </Left>
                         </ListItem>)} />
             </Card>
